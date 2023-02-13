@@ -1,0 +1,50 @@
+version: 0.2
+
+env:
+  variables:
+    ENVIRONMENT: 'prod'
+  # secrets-manager:
+  #   GITHUB_TOKEN: 'github_token'
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo Setting up git config
+      - git config user.email "codebuild@example.com"
+      - git config user.name "AWS Codebuild"
+      - echo Setting remote url
+      - git remote set-url origin https://$GITHUB_TOKEN@github.com/cheekeebreekee/honeydew-shared.git
+      - git status
+
+      - echo Checkout to a branch
+      - export BRANCH_NAME=$(git name-rev $CODEBUILD_SOURCE_VERSION | cut -d' ' -f2 | cut -d'~' -f1)
+      - git checkout $BRANCH_NAME
+
+      - echo Logging to AWS
+      - npm run aws:login
+      - echo Installing modules
+      - npm ci
+  build:
+    commands:
+      - export CURRENT_PACKAGE_VERSION=$(npm view @honeydew-shared version)
+      - export POTENTIAL_NEW_PACKAGE_VERSION=$(node calculatePotentialNewVersion.js $CURRENT_PACKAGE_VERSION)
+      - export PACKAGE_JSON_VERSION=$(node -e "console.log(require('./package.json').version);")
+      - echo Printing Env Variables
+      - printenv
+      - echo New version is $POTENTIAL_NEW_PACKAGE_VERSION;
+      - echo Building new version of common package;
+      - |
+        if [ "$PACKAGE_JSON_VERSION" != "$POTENTIAL_NEW_PACKAGE_VERSION" ]; then
+          echo Running npm version command
+          npm version $POTENTIAL_NEW_PACKAGE_VERSION -m "Upgrade to %s version (IGNORE_BUILD)";
+        fi
+      - npm run deploy;
+      - echo Build COMPLETED;
+      - echo pushing changes to remote repository;
+      - git push origin $BRANCH_NAME;
+    on-failure: ABORT
+  post_build:
+    commands:
+      - echo Deployment COMPLETED
