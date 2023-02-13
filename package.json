@@ -10,7 +10,9 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint --fix . --ext .ts",
     "fix:all": "prettier --write . && tslint -p tsconfig.json --fix",
-    "aws:login": "aws codeartifact login --tool npm --repository honeydew-shared --domain honeydew --domain-owner 882887517494 --region us-east-1"
+    "aws:login": "aws codeartifact login --tool npm --repository honeydew-shared --domain honeydew --domain-owner 882887517494 --region us-east-1",
+    "build": "rimraf dist && tsc",
+    "deploy": "npm run build && cp -r package.json dist/src/ && npm publish dist/src/"
   },
   "repository": {
     "type": "git",
