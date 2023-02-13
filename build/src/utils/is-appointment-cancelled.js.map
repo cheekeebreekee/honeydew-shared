@@ -1,0 +1,1 @@
+{"version":3,"file":"is-appointment-cancelled.js","sourceRoot":"","sources":["../../../src/utils/is-appointment-cancelled.ts"],"names":[],"mappings":";;;AAEA,SAAgB,sBAAsB,CAAC,OAAgB;IACrD,MAAM,qBAAqB,GAAG,OAAO,CAAC,iBAAiB;QACrD,CAAC,CAAC,OAAO,CAAC,iBAAiB,CAAC,CAAC,CAAC,CAAC,MAAM;QACrC,CAAC,CAAC,EAAE,CAAC;IAEP,OAAO,qBAAqB,KAAK,WAAW,CAAC;AAC/C,CAAC;AAND,wDAMC"}

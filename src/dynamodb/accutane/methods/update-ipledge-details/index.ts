@@ -20,7 +20,7 @@ export const updateIPledgeDetails = async (
 
   const accutane = await DynamoDBService.accutane.getByPatientId(patient.id);
 
-  if (!accutane.id) {
+  if (!accutane?.id) {
     const message = "Accutane record not found in database";
     logError(message);
     throw new Error(message);

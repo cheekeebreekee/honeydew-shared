@@ -1,8 +1,8 @@
-const packageJson = require('./package.json');
+const packageJson = require("./package.json");
 
 const isGreaterVersion = (firstVersion, secondVersion) => {
-  const [firstMajor, firstMinor, firstPatch] = firstVersion.split('.');
-  const [secondMajor, secondMinor, secondPatch] = secondVersion.split('.');
+  const [firstMajor, firstMinor, firstPatch] = firstVersion.split(".");
+  const [secondMajor, secondMinor, secondPatch] = secondVersion.split(".");
 
   // first checking major
   if (Number(firstMajor) > Number(secondMajor)) {
@@ -33,9 +33,9 @@ const handler = () => {
     return;
   } else {
     // if package deployed version is greater, then increment it and use as new
-    const [major, minor, patch] = currentVersion.split('.');
+    const [major, minor, patch] = currentVersion.split(".");
 
-    const newVersion = [major, minor, Number(patch) + 1].join('.');
+    const newVersion = [major, minor, Number(patch) + 1].join(".");
     // instead of process.stdout.write()
     console.log(newVersion);
   }

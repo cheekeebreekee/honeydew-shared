@@ -1,0 +1,1 @@
+{"version":3,"file":"create.js","sourceRoot":"","sources":["../../../../../src/dynamodb/patients/queries/create.ts"],"names":[],"mappings":";;AACA,kDAAyC;AAEzC,kDAAgD;AAEhD,kBAAe,CAAC,OAAgB,EAAwC,EAAE;IACxE,MAAM,KAAK,GAAG;QACZ,SAAS,EAAE,eAAG,CAAC,WAAW;QAC1B,IAAI,EAAE,OAAO;KACd,CAAC;IACF,IAAA,gBAAO,EAAC,gBAAgB,EAAE,KAAK,CAAC,CAAC;IACjC,OAAO,KAAK,CAAC;AACf,CAAC,CAAC"}

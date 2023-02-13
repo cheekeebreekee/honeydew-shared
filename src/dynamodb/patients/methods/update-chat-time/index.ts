@@ -14,7 +14,7 @@ export const updateChatTime = async (
   logInfo("Update chat time of the patient in DB", { id, role, timestamp });
   const patient = await DynamoDBService.patients.get(id);
   logInfo("Patient to update", patient);
-  const chatPayload: ChatInfo = {
+  const chatPayload: Partial<ChatInfo> = {
     ...(patient.chatInfo || {}),
     lastMessageSentTimestamp: timestamp,
     lastMessageSentByRole: role,

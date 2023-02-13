@@ -14,7 +14,7 @@ export const confirmBloodWork = async (
 
   const accutane = await DynamoDBService.accutane.getByPatientId(patientId);
 
-  if (!accutane.id) {
+  if (!accutane?.id) {
     const message = "Accutane record not found in database";
     logError(message);
     throw new Error(message);
@@ -23,7 +23,7 @@ export const confirmBloodWork = async (
   logInfo("Confirming blood work in Accutane record", accutane);
 
   const { Attributes } = await dynamoDb
-    .update(confirmBloodWorkQuery(accutane.id, confirmed))
+    .update(confirmBloodWorkQuery(accutane?.id, confirmed))
     .promise();
 
   logInfo("blood work was successfully added to accutane record", Attributes);

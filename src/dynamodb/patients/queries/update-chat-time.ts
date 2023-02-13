@@ -5,7 +5,7 @@ import { logInfo } from "../../../utils/logger";
 
 export default (
   id: string,
-  chatInfo: ChatInfo
+  chatInfo: Partial<ChatInfo>
 ): DynamoDB.DocumentClient.UpdateItemInput => {
   const query = {
     TableName: ENV.USERS_TABLE,

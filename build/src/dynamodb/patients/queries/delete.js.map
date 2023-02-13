@@ -1,0 +1,1 @@
+{"version":3,"file":"delete.js","sourceRoot":"","sources":["../../../../../src/dynamodb/patients/queries/delete.ts"],"names":[],"mappings":";;AACA,kDAAyC;AACzC,kDAAgD;AAEhD,kBAAe,CAAC,EAAU,EAA2C,EAAE;IACrE,MAAM,KAAK,GAAG;QACZ,SAAS,EAAE,eAAG,CAAC,WAAW;QAC1B,GAAG,EAAE;YACH,EAAE;SACH;KACF,CAAC;IACF,IAAA,gBAAO,EAAC,gBAAgB,EAAE,KAAK,CAAC,CAAC;IACjC,OAAO,KAAK,CAAC;AACf,CAAC,CAAC"}
