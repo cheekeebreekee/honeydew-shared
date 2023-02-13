@@ -1,8 +1,8 @@
 import { DynamoDB } from "aws-sdk";
-import { ENV } from "../../../../../constants";
-import { CalendlyPayload } from "../../../../../types/CalendlyEvents";
-import { Patient } from "../../../../../types/Patient";
-import { logInfo } from "../../../../../utils/logger";
+import { ENV } from "../../../constants";
+import { CalendlyPayload } from "../../../types/CalendlyEvents";
+import { Patient } from "../../../types/Patient";
+import { logInfo } from "../../../utils/logger";
 
 export default (
   patient: Patient,

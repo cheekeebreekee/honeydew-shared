@@ -1,5 +1,5 @@
 import { DynamoDB } from "aws-sdk";
-import { logInfo } from "../../../../../../utils/logger";
+import { logInfo } from "../../../../utils/logger";
 import updateTimeQuery from "../../queries/update-time";
 
 const dynamoDb = new DynamoDB.DocumentClient();

@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk";
-import { Provider } from "../../../../../../types/Provider";
-import { logInfo } from "../../../../../../utils/logger";
+import { Provider } from "../../../../types/Provider";
+import { logInfo } from "../../../../utils/logger";
 import createProviderQuery from "../../queries/create";
 
 const dynamoDb = new DynamoDB.DocumentClient();

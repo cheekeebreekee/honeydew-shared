@@ -1,8 +1,8 @@
 import { DynamoDB } from "aws-sdk";
 import updateChatTimeQuery from "../../queries/update-chat-time";
-import { logInfo } from "../../../../../../utils/logger";
-import { ChatInfo, Patient } from "../../../../../../types/Patient";
-import { DynamoDBService } from "../../../..";
+import { logInfo } from "../../../../utils/logger";
+import { ChatInfo, Patient } from "../../../../types/Patient";
+import { DynamoDBService } from "../../../index";
 
 const dynamoDb = new DynamoDB.DocumentClient();
 

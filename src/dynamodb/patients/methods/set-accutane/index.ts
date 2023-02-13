@@ -1,8 +1,8 @@
 import { DynamoDB } from "aws-sdk";
-import { Patient, PatientNote } from "../../../../../../types/Patient";
+import { Patient, PatientNote } from "../../../../types/Patient";
 import setAccutaneFlagQuery from "../../queries/set-accutane-flag";
 import getPatientQuery from "../../queries/get";
-import { logInfo } from "../../../../../../utils/logger";
+import { logInfo } from "../../../../utils/logger";
 
 const dynamoDb = new DynamoDB.DocumentClient();
 

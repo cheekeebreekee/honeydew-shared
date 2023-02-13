@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk";
 import { Patient } from "src/types/Patient";
-import { logInfo } from "../../../../../../utils/logger";
+import { logInfo } from "../../../../utils/logger";
 import updateUpcomingAppointmentNotificationStatusQuery from "../../queries/update-upcoming-appointment-notification-status";
 
 const dynamoDb = new DynamoDB.DocumentClient();

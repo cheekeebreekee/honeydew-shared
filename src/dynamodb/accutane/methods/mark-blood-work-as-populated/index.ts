@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk";
 import { Accutane } from "src/types/Accutane";
-import { logInfo } from "../../../../../../utils/logger";
+import { logInfo } from "../../../../utils/logger";
 import markBloodWorkAsPopulatedQuery from "../../queries/mark-blood-work-as-populated";
 
 const dynamoDb = new DynamoDB.DocumentClient();

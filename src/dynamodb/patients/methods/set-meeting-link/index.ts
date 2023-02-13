@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk";
 import { Patient } from "src/types/Patient";
-import { logInfo } from "../../../../../../utils/logger";
+import { logInfo } from "../../../../utils/logger";
 import setMeetingLinkQuery from "../../queries/set-meeting-link";
 
 const dynamoDb = new DynamoDB.DocumentClient();

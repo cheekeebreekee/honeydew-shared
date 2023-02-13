@@ -1,4 +1,4 @@
-import { DynamoDBService } from "../services/dynamodb";
+import { DynamoDBService } from "../dynamodb";
 import { logError } from "./logger";
 
 export async function getProviderByEmail(email: string) {

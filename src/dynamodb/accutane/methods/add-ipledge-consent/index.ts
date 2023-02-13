@@ -1,7 +1,7 @@
 import { DynamoDB } from "aws-sdk";
 import { Accutane, IPledgeConsent } from "src/types/Accutane";
-import { DynamoDBService } from "../../../..";
-import { logError, logInfo } from "../../../../../../utils/logger";
+import { DynamoDBService } from "../../../index";
+import { logError, logInfo } from "../../../../utils/logger";
 import addIpledgeConsentQuery from "../../queries/add-ipledge-consent";
 
 const dynamoDb = new DynamoDB.DocumentClient();

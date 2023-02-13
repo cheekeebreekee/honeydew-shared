@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk";
-import { ENV } from "../../../../../constants";
-import { logInfo } from "../../../../../utils/logger";
+import { ENV } from "../../../constants";
+import { logInfo } from "../../../utils/logger";
 
 export default (id: string, updatedTime: number) => {
   logInfo("Query input", { id, updatedTime });

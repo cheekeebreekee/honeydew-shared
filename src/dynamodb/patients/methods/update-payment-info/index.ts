@@ -1,12 +1,8 @@
 import { DynamoDB } from "aws-sdk";
 import updatePaymentInfoQuery from "../../queries/update-payment-info";
-import { logInfo } from "../../../../../../utils/logger";
-import {
-  Membership,
-  Patient,
-  PaymentInfo,
-} from "../../../../../../types/Patient";
-import { DynamoDBService } from "../../../..";
+import { logInfo } from "../../../../utils/logger";
+import { Membership, Patient, PaymentInfo } from "../../../../types/Patient";
+import { DynamoDBService } from "../../../index";
 
 const dynamoDb = new DynamoDB.DocumentClient();
 

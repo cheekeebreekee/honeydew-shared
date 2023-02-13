@@ -1,7 +1,7 @@
 import { DynamoDB } from "aws-sdk";
-import { ENV } from "../../../../../constants";
-import { ShippingInfoPayload } from "../../../../../types/Payload";
-import { logInfo } from "../../../../../utils/logger";
+import { ENV } from "../../../constants";
+import { ShippingInfoPayload } from "../../../types/Payload";
+import { logInfo } from "../../../utils/logger";
 
 export default (
   id: string,

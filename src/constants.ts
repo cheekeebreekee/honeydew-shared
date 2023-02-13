@@ -18,6 +18,7 @@ export const REMOTE_DERMATOLOGY_PC_ACCOUNT_ID = "acct_1K9XPKIZbNjZjzER";
 export const ACNE_DASHBOARD_URL = "https://app.honeydewcare.com/login";
 export const ACNE_SURVEY_URL = "https://survey.honeydewcare.com";
 export const SIGN_NOW_BASE_URL = "https://api.signnow.com";
+export const ACNE_APP_URL = "https://app.honeydewcare.com";
 
 export const SUBSCRIPTIONS_PRETTY: { [p: string]: string } = {
   month: "Monthly subscription",

@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk";
 import { Patient } from "src/types/Patient";
-import { logInfo } from "../../../../../../utils/logger";
+import { logInfo } from "../../../../utils/logger";
 import updateMembershipNotificationLevelQuery from "../../queries/update-membership-notification-level";
 
 const dynamoDb = new DynamoDB.DocumentClient();

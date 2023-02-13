@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk";
-import { Accutane } from "../../../../../../types/Accutane";
-import { logInfo } from "../../../../../../utils/logger";
+import { Accutane } from "../../../../types/Accutane";
+import { logInfo } from "../../../../utils/logger";
 import createAccutane from "../../queries/create";
 
 const dynamoDb = new DynamoDB.DocumentClient();

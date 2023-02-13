@@ -1,8 +1,8 @@
 import { DynamoDB } from "aws-sdk";
 import { Accutane, BirthControl } from "src/types/Accutane";
 import { Patient } from "src/types/Patient";
-import { ENV } from "../../../../../constants";
-import { logInfo } from "../../../../../utils/logger";
+import { ENV } from "../../../constants";
+import { logInfo } from "../../../utils/logger";
 
 export default (
   accutane: Accutane

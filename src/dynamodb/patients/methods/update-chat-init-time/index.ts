@@ -1,9 +1,9 @@
 import { DynamoDB } from "aws-sdk";
 import updateChatQuery from "../../queries/update-chat-time";
-import { logInfo } from "../../../../../../utils/logger";
-import { ChatInfo, Patient } from "../../../../../../types/Patient";
-import { UpdateChatInitTimestampPayload } from "../../../../../../types/Payload";
-import { DynamoDBService } from "../../../..";
+import { logInfo } from "../../../../utils/logger";
+import { ChatInfo, Patient } from "../../../../types/Patient";
+import { UpdateChatInitTimestampPayload } from "../../../../types/Payload";
+import { DynamoDBService } from "../../../index";
 
 const dynamoDb = new DynamoDB.DocumentClient();
 

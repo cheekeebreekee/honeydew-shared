@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk";
-import { Accutane } from "../../../../../../types/Accutane";
-import { logError, logInfo } from "../../../../../../utils/logger";
+import { Accutane } from "../../../../types/Accutane";
+import { logError, logInfo } from "../../../../utils/logger";
 import getByPatientEmailQuery from "../../queries/get-by-email";
 
 const dynamoDb = new DynamoDB.DocumentClient();

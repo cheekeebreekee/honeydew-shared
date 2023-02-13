@@ -1,7 +1,7 @@
 import { DynamoDB } from "aws-sdk";
-import { DynamoDBService } from "../../../..";
-import { Patient, TreatmentPlanData } from "../../../../../../types/Patient";
-import { logInfo } from "../../../../../../utils/logger";
+import { DynamoDBService } from "../../../index";
+import { Patient, TreatmentPlanData } from "../../../../types/Patient";
+import { logInfo } from "../../../../utils/logger";
 import setSkinImagesQuery from "../../queries/set-skin-images";
 
 const dynamoDb = new DynamoDB.DocumentClient();

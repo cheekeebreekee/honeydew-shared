@@ -1,7 +1,7 @@
 import { DynamoDB } from "aws-sdk";
 import { Accutane } from "src/types/Accutane";
-import { DynamoDBService } from "../../../..";
-import { logError, logInfo } from "../../../../../../utils/logger";
+import { DynamoDBService } from "../../../index";
+import { logError, logInfo } from "../../../../utils/logger";
 import setRemsNumberQuery from "../../queries/set-rems-number";
 
 const dynamoDb = new DynamoDB.DocumentClient();

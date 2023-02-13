@@ -1,7 +1,7 @@
 import { DynamoDB } from "aws-sdk";
-import { ENV } from "../../../../../constants";
-import { AccutaneNotification } from "../../../../../types/AccutaneNotification";
-import { logInfo } from "../../../../../utils/logger";
+import { ENV } from "../../../constants";
+import { AccutaneNotification } from "../../../types/AccutaneNotification";
+import { logInfo } from "../../../utils/logger";
 
 export default (
   accutaneNotification: AccutaneNotification

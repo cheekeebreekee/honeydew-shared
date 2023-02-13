@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk";
 import { Patient } from "src/types/Patient";
-import { logInfo } from "../../../../../../utils/logger";
+import { logInfo } from "../../../../utils/logger";
 import updateMedBackgroundFillingNotificationStatusQuery from "../../queries/update-med-background-filling-notification-status";
 
 const dynamoDb = new DynamoDB.DocumentClient();

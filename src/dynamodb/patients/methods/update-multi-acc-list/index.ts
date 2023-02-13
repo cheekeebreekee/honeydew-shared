@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk";
 import { Patient } from "src/types/Patient";
-import { logInfo } from "../../../../../../utils/logger";
+import { logInfo } from "../../../../utils/logger";
 import updateMultiAccListQuery from "../../queries/update-multi-acc-list";
 
 const dynamoDb = new DynamoDB.DocumentClient();

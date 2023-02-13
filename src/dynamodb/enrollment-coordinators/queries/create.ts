@@ -1,7 +1,7 @@
 import { DynamoDB } from "aws-sdk";
-import { ENV } from "../../../../../constants";
-import { EnrollmentCoordinator } from "../../../../../types/EnrollmentCoordinator";
-import { logInfo } from "../../../../../utils/logger";
+import { ENV } from "../../../constants";
+import { EnrollmentCoordinator } from "../../../types/EnrollmentCoordinator";
+import { logInfo } from "../../../utils/logger";
 
 export default (
   enrollmentCoordinator: EnrollmentCoordinator

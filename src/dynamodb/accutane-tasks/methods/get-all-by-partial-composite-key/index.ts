@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk";
-import { AccutaneTask } from "../../../../../../types/AccutaneTask";
-import { logError, logInfo } from "../../../../../../utils/logger";
+import { AccutaneTask } from "../../../../types/AccutaneTask";
+import { logError, logInfo } from "../../../../utils/logger";
 import getAllByPartialCompositeKeyQuery from "../../queries/get-all-by-partial-composite-key";
 
 const dynamoDb = new DynamoDB.DocumentClient();

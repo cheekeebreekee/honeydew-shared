@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk";
-import { AccutaneTask } from "../../../../../../types/AccutaneTask";
-import { logError, logInfo } from "../../../../../../utils/logger";
+import { AccutaneTask } from "../../../../types/AccutaneTask";
+import { logError, logInfo } from "../../../../utils/logger";
 import deleteAllDocumentRelatedTasksQuery from "../../queries/delete-all-document-related";
 
 const dynamoDb = new DynamoDB.DocumentClient();

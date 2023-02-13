@@ -1,7 +1,7 @@
 import { DynamoDB } from "aws-sdk";
 import { Accutane, PregnancyTest } from "src/types/Accutane";
-import { DynamoDBService } from "../../../..";
-import { logError, logInfo } from "../../../../../../utils/logger";
+import { DynamoDBService } from "../../../index";
+import { logError, logInfo } from "../../../../utils/logger";
 import addPregnancyTestQuery from "../../queries/add-pregnancy-test";
 
 const dynamoDb = new DynamoDB.DocumentClient();

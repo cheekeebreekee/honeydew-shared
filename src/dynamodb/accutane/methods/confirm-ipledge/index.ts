@@ -1,8 +1,8 @@
 import { DynamoDB } from "aws-sdk";
 import { Accutane, IPledgeConsent } from "src/types/Accutane";
 import { Patient } from "src/types/Patient";
-import { DynamoDBService } from "../../../..";
-import { logError, logInfo } from "../../../../../../utils/logger";
+import { DynamoDBService } from "../../../index";
+import { logError, logInfo } from "../../../../utils/logger";
 import confirmIPledgeMaleQuery from "../../queries/confirm-ipledge-male";
 import confirmIPledgeFemaleQuery from "../../queries/confirm-ipledge-female";
 

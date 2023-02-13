@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk";
-import { TreatmentPlan } from "../../../../../../types/TreatmentPlan";
-import { logError, logInfo } from "../../../../../../utils/logger";
+import { TreatmentPlan } from "../../../../types/TreatmentPlan";
+import { logError, logInfo } from "../../../../utils/logger";
 import getTreatmentPlanQuery from "../../queries/get";
 
 const dynamoDb = new DynamoDB.DocumentClient();

@@ -1,7 +1,7 @@
 import { DynamoDB } from "aws-sdk";
 import { Accutane, BloodWork } from "src/types/Accutane";
-import { DynamoDBService } from "../../../..";
-import { logError, logInfo } from "../../../../../../utils/logger";
+import { DynamoDBService } from "../../../index";
+import { logError, logInfo } from "../../../../utils/logger";
 import addBloodWorkQuery from "../../queries/add-blood-work";
 
 const dynamoDb = new DynamoDB.DocumentClient();

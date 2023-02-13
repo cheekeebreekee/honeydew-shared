@@ -4,7 +4,12 @@
   "description": "Honeydew common clients",
   "main": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier": "prettier --check .",
+    "prettier:fix": "prettier --write .",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint --fix . --ext .ts",
+    "fix:all": "prettier --write . && tslint -p tsconfig.json --fix"
   },
   "repository": {
     "type": "git",

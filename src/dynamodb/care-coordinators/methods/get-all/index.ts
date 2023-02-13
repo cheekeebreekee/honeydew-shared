@@ -1,7 +1,7 @@
 import { DynamoDB } from "aws-sdk";
-import { ENV } from "../../../../../../constants";
-import { CareCoordinator } from "../../../../../../types/CareCoordinator";
-import { logInfo, logWarn } from "../../../../../../utils/logger";
+import { ENV } from "../../../../constants";
+import { CareCoordinator } from "../../../../types/CareCoordinator";
+import { logInfo, logWarn } from "../../../../utils/logger";
 
 const dynamoDb = new DynamoDB.DocumentClient();
 

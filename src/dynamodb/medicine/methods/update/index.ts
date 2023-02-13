@@ -1,7 +1,7 @@
 import { DynamoDB } from "aws-sdk";
-import { DynamoDBService } from "../../../..";
-import { Medicine } from "../../../../../../types/Medicine";
-import { logInfo } from "../../../../../../utils/logger";
+import { DynamoDBService } from "../../../index";
+import { Medicine } from "../../../../types/Medicine";
+import { logInfo } from "../../../../utils/logger";
 import updateMedicineQuery from "../../queries/update";
 
 const dynamoDb = new DynamoDB.DocumentClient();

@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk";
-import { UnsupportedPatient } from "../../../../../../types/Patient";
-import { logInfo } from "../../../../../../utils/logger";
+import { UnsupportedPatient } from "../../../../types/Patient";
+import { logInfo } from "../../../../utils/logger";
 import createUnsupportedPatientQuery from "../../queries/create";
 
 const dynamoDb = new DynamoDB.DocumentClient();

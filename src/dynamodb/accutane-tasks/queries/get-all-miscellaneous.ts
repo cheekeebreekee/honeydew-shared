@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk";
-import { ENV } from "../../../../../constants";
-import { logInfo } from "../../../../../utils/logger";
+import { ENV } from "../../../constants";
+import { logInfo } from "../../../utils/logger";
 
 const generateFilterExpression = (
   employeeId: string,

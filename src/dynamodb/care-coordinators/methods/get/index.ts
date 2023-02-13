@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk";
-import { CareCoordinator } from "../../../../../../types/CareCoordinator";
-import { logError, logInfo } from "../../../../../../utils/logger";
+import { CareCoordinator } from "../../../../types/CareCoordinator";
+import { logError, logInfo } from "../../../../utils/logger";
 import getCareCoordinatorQuery from "../../queries/get";
 
 const dynamoDb = new DynamoDB.DocumentClient();

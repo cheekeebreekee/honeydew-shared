@@ -1,7 +1,7 @@
 import { DynamoDB } from "aws-sdk";
-import { ENV } from "../../../../../constants";
-import { Accutane } from "../../../../../types/Accutane";
-import { logInfo } from "../../../../../utils/logger";
+import { ENV } from "../../../constants";
+import { Accutane } from "../../../types/Accutane";
+import { logInfo } from "../../../utils/logger";
 
 export default (
   accutane: Partial<Accutane>

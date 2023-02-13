@@ -1,7 +1,7 @@
 import { DynamoDB } from "aws-sdk";
 import { Patient } from "src/types/Patient";
-import { InsurancceInfoPayload } from "../../../../../../types/Payload";
-import { logInfo } from "../../../../../../utils/logger";
+import { InsurancceInfoPayload } from "../../../../types/Payload";
+import { logInfo } from "../../../../utils/logger";
 import updateInsuranceInfoQuery from "../../queries/update-insurance-info";
 
 const dynamoDb = new DynamoDB.DocumentClient();

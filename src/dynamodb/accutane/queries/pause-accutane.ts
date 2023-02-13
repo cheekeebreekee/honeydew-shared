@@ -1,7 +1,7 @@
 import { DynamoDB } from "aws-sdk";
 import { BloodWork } from "src/types/Accutane";
-import { ENV } from "../../../../../constants";
-import { logInfo } from "../../../../../utils/logger";
+import { ENV } from "../../../constants";
+import { logInfo } from "../../../utils/logger";
 
 export default (
   id: string,

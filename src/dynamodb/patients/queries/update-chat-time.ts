@@ -1,7 +1,7 @@
 import { DynamoDB } from "aws-sdk";
-import { ENV } from "../../../../../constants";
-import { ChatInfo } from "../../../../../types/Patient";
-import { logInfo } from "../../../../../utils/logger";
+import { ENV } from "../../../constants";
+import { ChatInfo } from "../../../types/Patient";
+import { logInfo } from "../../../utils/logger";
 
 export default (
   id: string,

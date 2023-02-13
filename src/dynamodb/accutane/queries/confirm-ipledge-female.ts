@@ -1,8 +1,8 @@
 import { DynamoDB } from "aws-sdk";
 import { Accutane } from "src/types/Accutane";
 import { Patient } from "src/types/Patient";
-import { ENV } from "../../../../../constants";
-import { logInfo } from "../../../../../utils/logger";
+import { ENV } from "../../../constants";
+import { logInfo } from "../../../utils/logger";
 
 const NEXT_CONFIRMATION_DATE_OFFSET = 30;
 
