@@ -28,7 +28,7 @@ phases:
       - npm ci
   build:
     commands:
-      - export CURRENT_PACKAGE_VERSION=$(npm view @honeydew-shared version)
+      - export CURRENT_PACKAGE_VERSION=$(npm view honeydew-shared version)
       - export POTENTIAL_NEW_PACKAGE_VERSION=$(node calculatePotentialNewVersion.js $CURRENT_PACKAGE_VERSION)
       - export PACKAGE_JSON_VERSION=$(node -e "console.log(require('./package.json').version);")
       - echo Printing Env Variables
