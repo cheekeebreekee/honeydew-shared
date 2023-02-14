@@ -1,5 +1,5 @@
 export function stringToBool(string: string | boolean | null) {
-  let result = null;
+  let result;
 
   switch (string) {
     case "Yes":

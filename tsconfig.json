@@ -1,20 +1,21 @@
 {
   "compilerOptions": {
-    "target": "es2019",
-    "module": "commonjs",
-    "lib": [
-      "es2020"
-    ],
+    "preserveConstEnums": true,
+    "strictNullChecks": true,
     "sourceMap": true,
-    "outDir": "./build",
-    "rootDir": "./",
-    "strict": true,
-    "strictPropertyInitialization": false,
-    "moduleResolution": "node",
-    "baseUrl": "./",
-    "paths": {},
+    "allowJs": true,
+    "target": "ES2019",
+    "outDir": "dist",
     "esModuleInterop": true,
-    "experimentalDecorators": true
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "lib": ["es2019"],
+    "rootDir": "./",
+    "incremental": true,
+    "watch": false,
+    "module": "CommonJS",
+    "baseUrl": "./",
+    "declaration": true,
   },
   "exclude": [
     "**/node_modules/**/*",

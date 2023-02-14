@@ -1,1 +1,0 @@
-{"version":3,"file":"generate-chat-info-payload.js","sourceRoot":"","sources":["../../../src/utils/generate-chat-info-payload.ts"],"names":[],"mappings":";;;AAEO,MAAM,uBAAuB,GAAG,CACrC,QAAgB,EAChB,uBAA+B,EAC/B,QAAkB,EAClB,EAAE,CAAC,CAAC;IACJ,GAAG,QAAQ;IACX,wBAAwB,EAAE,uBAAuB;IACjD,qBAAqB,EAAE,QAAQ;CAChC,CAAC,CAAC;AARU,QAAA,uBAAuB,2BAQjC"}

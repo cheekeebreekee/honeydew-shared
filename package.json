@@ -39,7 +39,8 @@
     "stripe": "^8.107.0",
     "tslint": "^6.1.3",
     "twilio": "^3.50.0",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "rimraf": "^3.0.2"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.92",

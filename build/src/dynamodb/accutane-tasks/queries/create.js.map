@@ -1,1 +1,0 @@
-{"version":3,"file":"create.js","sourceRoot":"","sources":["../../../../../src/dynamodb/accutane-tasks/queries/create.ts"],"names":[],"mappings":";;AACA,kDAAyC;AAEzC,kDAAgD;AAEhD,kBAAe,CAAC,IAAkB,EAAwC,EAAE;IAC1E,MAAM,KAAK,GAAG;QACZ,SAAS,EAAE,eAAG,CAAC,oBAAoB;QACnC,IAAI,EAAE,IAAI;KACX,CAAC;IACF,IAAA,gBAAO,EAAC,gBAAgB,EAAE,KAAK,CAAC,CAAC;IACjC,OAAO,KAAK,CAAC;AACf,CAAC,CAAC"}
