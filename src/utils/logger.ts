@@ -15,3 +15,8 @@ export const logWarn = (msg: string, additionalInfo?: any): void => {
 export const logError = (msg: string, additionalInfo?: any): void => {
   console.error(msg, additionalInfo);
 };
+
+export const logDebug = (msg: string, additionalInfo?: any): void => {
+  // TODO: disable debug logs functionality
+  console.debug(createMessage(msg, additionalInfo));
+};

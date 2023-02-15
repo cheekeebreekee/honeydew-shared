@@ -4,6 +4,7 @@ import {
   APIGatewayProxyResultV2,
   Handler,
 } from "aws-lambda";
+import { config } from "src/shared/config-manager";
 import { logError, logInfo } from "./logger";
 import { HttpResponse } from "./http-response";
 
@@ -14,6 +15,7 @@ export const enhancedApiHandler =
 
     let response: APIGatewayProxyResultV2;
     try {
+      await config.initConfig();
       response = await handler(event, context, callback);
     } catch (error: any) {
       logError("Lambda exit with error", error);
@@ -31,6 +33,7 @@ export const enhancedWebhookHandler =
 
     let response: APIGatewayProxyResultV2;
     try {
+      await config.initConfig();
       response = await handler(event, context, callback);
       logInfo("Lambda exit", { response });
     } catch (error: any) {
@@ -48,6 +51,7 @@ export const enhancedLambdaConsoleHandler =
 
     let response: APIGatewayProxyResultV2;
     try {
+      await config.initConfig();
       response = await handler(event, context, callback);
     } catch (error: any) {
       logError("Lambda exit with error", error);
