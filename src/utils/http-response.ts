@@ -1,5 +1,5 @@
 import { APIGatewayProxyResultV2 } from "aws-lambda";
-import { DEFAULT_RESPONSE_HEADERS } from "../constants";
+import { DEFAULT_RESPONSE_HEADERS } from "../shared/constants";
 
 const headers = {
   ...DEFAULT_RESPONSE_HEADERS,

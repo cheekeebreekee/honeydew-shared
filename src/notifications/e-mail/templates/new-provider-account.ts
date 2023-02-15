@@ -1,4 +1,4 @@
-import { ACNE_APP_URL } from "../../../constants";
+import { ACNE_APP_URL } from "../../../shared/constants";
 import { Provider } from "../../../types/Provider";
 import { logInfo } from "../../../utils/logger";
 

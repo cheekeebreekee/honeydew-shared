@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk";
 import { Key } from "aws-sdk/clients/dynamodb";
-import { ENV } from "../../../../constants";
+import { ENV } from "../../../../shared/constants";
 import { Patient } from "../../../../types/Patient";
 import { logInfo, logWarn } from "../../../../utils/logger";
 

@@ -1,4 +1,4 @@
-import { ADMINS_LIST } from "../../constants";
+import { ADMINS_LIST } from "../../shared/constants";
 import { Patient } from "../../types/Patient";
 import { logInfo } from "../../utils/logger";
 import { DynamoDBService } from "../../dynamodb";

@@ -1,5 +1,5 @@
 import { DynamoDB } from "aws-sdk";
-import { ENV } from "../../../constants";
+import { ENV } from "../../../shared/constants";
 import { CalendlyPayload } from "../../../types/CalendlyEvents";
 import { Patient } from "../../../types/Patient";
 import { logInfo } from "../../../utils/logger";

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ENV } from "src/constants";
+import { ENV } from "src/shared/constants";
 import { logInfo } from "src/utils/logger";
 import { CalendlySingleUseLinkResponse } from "../../../types/CalendlyAPI";
 

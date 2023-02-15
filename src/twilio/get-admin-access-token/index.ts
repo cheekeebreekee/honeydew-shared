@@ -1,5 +1,5 @@
 import AccessToken, { ChatGrant } from "twilio/lib/jwt/AccessToken";
-import { ENV } from "../../constants";
+import { ENV } from "../../shared/constants";
 import { logInfo } from "../../utils/logger";
 
 export const getAdminAccessToken = (identity: string) => {

@@ -1,5 +1,5 @@
 import { CognitoIdentityServiceProvider } from "aws-sdk";
-import { ENV } from "../../constants";
+import { ENV } from "../../shared/constants";
 import { logInfo } from "../../utils/logger";
 
 const cognitoIdentityServiceProvider = new CognitoIdentityServiceProvider();

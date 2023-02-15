@@ -1,4 +1,4 @@
-import { ACNE_APP_URL, SUBSCRIPTIONS_PRETTY } from "../../../constants";
+import { ACNE_APP_URL, SUBSCRIPTIONS_PRETTY } from "../../../shared/constants";
 import { logInfo } from "../../../utils/logger";
 
 export const membershipConfirmationMultiTemplate = (

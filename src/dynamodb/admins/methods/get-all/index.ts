@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk";
 import { EnrollmentCoordinator } from "src/types/EnrollmentCoordinator";
-import { ENV } from "../../../../constants";
+import { ENV } from "../../../../shared/constants";
 import { logInfo, logWarn } from "../../../../utils/logger";
 
 const dynamoDb = new DynamoDB.DocumentClient();

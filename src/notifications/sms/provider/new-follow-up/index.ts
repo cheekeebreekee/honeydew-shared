@@ -1,6 +1,6 @@
 import { SNS } from "aws-sdk";
 import { trimPhoneNumber } from "../../../../utils/trim-phone-number";
-import { ACNE_APP_URL } from "../../../../constants";
+import { ACNE_APP_URL } from "../../../../shared/constants";
 import { Provider } from "../../../../types/Provider";
 import { logInfo } from "../../../../utils/logger";
 import { DynamoDBService } from "../../../../dynamodb";

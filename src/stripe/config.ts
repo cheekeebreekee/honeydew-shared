@@ -1,4 +1,4 @@
-import { ENV } from "../constants";
+import { ENV } from "../shared/constants";
 
 export const paymentConfig = {
   currency: "USD",

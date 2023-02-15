@@ -1,6 +1,6 @@
 import { SNS } from "aws-sdk";
 import { trimPhoneNumber } from "../../../../utils/trim-phone-number";
-import { ENV } from "../../../../constants";
+import { ENV } from "../../../../shared/constants";
 import { Patient } from "../../../../types/Patient";
 import { arePhoneNumbersEqual } from "../../../../utils/are-phone-number-equal";
 import { logInfo } from "../../../../utils/logger";

@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk";
 import { AccutaneTask } from "src/types/AccutaneTask";
-import { ENV } from "../../../constants";
+import { ENV } from "../../../shared/constants";
 import { logInfo } from "../../../utils/logger";
 
 export default (

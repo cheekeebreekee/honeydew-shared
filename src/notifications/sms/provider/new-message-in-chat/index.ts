@@ -1,6 +1,6 @@
 import { SNS } from "aws-sdk";
 import { trimPhoneNumber } from "../../../../utils/trim-phone-number";
-import { ACNE_APP_URL } from "../../../../constants";
+import { ACNE_APP_URL } from "../../../../shared/constants";
 import { Patient } from "../../../../types/Patient";
 import { Provider } from "../../../../types/Provider";
 import { getPatientInitials } from "../../../../utils/get-patient-initials";

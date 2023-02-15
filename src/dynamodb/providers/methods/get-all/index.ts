@@ -1,5 +1,5 @@
 import { DynamoDB } from "aws-sdk";
-import { ENV } from "../../../../constants";
+import { ENV } from "../../../../shared/constants";
 import { Provider } from "../../../../types/Provider";
 import { logInfo, logWarn } from "../../../../utils/logger";
 

@@ -1,7 +1,7 @@
 import { SNS } from "aws-sdk";
 import { getMomentDate } from "src/utils/get-date-pretty";
 import { trimPhoneNumber } from "../../../../utils/trim-phone-number";
-import { ACNE_APP_URL } from "../../../../constants";
+import { ACNE_APP_URL } from "../../../../shared/constants";
 import { Patient } from "../../../../types/Patient";
 import { arePhoneNumbersEqual } from "../../../../utils/are-phone-number-equal";
 import { logInfo } from "../../../../utils/logger";

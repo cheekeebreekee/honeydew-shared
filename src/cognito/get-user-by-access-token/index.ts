@@ -1,5 +1,5 @@
 import { CognitoIdentityServiceProvider } from "aws-sdk";
-import { ENV } from "src/constants";
+import { ENV } from "src/shared/constants";
 import { CognitoUserCustom } from "src/types/Cognito";
 import { logError, logInfo } from "../../utils/logger";
 

@@ -1,6 +1,6 @@
 import { SNS } from "aws-sdk";
 import { trimPhoneNumber } from "../../../../utils/trim-phone-number";
-import { ACNE_APP_URL } from "../../../../constants";
+import { ACNE_APP_URL } from "../../../../shared/constants";
 import { arePhoneNumbersEqual } from "../../../../utils/are-phone-number-equal";
 import { logInfo } from "../../../../utils/logger";
 
