@@ -3,6 +3,7 @@ import {
   APIGatewayProxyEventV2,
   APIGatewayProxyResultV2,
   Handler,
+  SQSEvent,
 } from "aws-lambda";
 import { config } from "src/shared/config-manager";
 import { logError, logInfo } from "./logger";
@@ -42,6 +43,22 @@ export const enhancedWebhookHandler =
 
     // Respond with only success to prevent webhooks detach
     return HttpResponse.success();
+  };
+
+export const enhancedSQSHandler =
+  <T = SQSEvent>(handler: Handler<T>): Handler =>
+  async (event, context, callback) => {
+    logInfo("Event received", event);
+
+    try {
+      await config.initConfig();
+      await handler(event, context, callback);
+    } catch (error: any) {
+      logError("Lambda exit with error", error);
+      throw error;
+    }
+
+    logInfo("Lambda exit");
   };
 
 export const enhancedLambdaConsoleHandler =
