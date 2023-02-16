@@ -1,4 +1,4 @@
-export interface CalendlyEventType {
+export interface CalendlyEventTypePayload {
   uuid: string;
   kind: string;
   slug: string;
@@ -76,7 +76,7 @@ export interface CalendlyTracking {
 }
 
 export interface CalendlyPayload {
-  event_type: CalendlyEventType;
+  event_type: CalendlyEventTypePayload;
   event: CalendlyEvent;
   invitee: CalendlyInvitee;
   questions_and_answers: CalendlyQNA[];
