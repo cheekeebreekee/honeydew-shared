@@ -6,5 +6,5 @@ export { appointmentConfirmationReply } from "./appointment-confirmation-reply";
 export { appointmentCancellationReply } from "./appointment-cancellation-reply";
 export { newMessageInChat } from "./new-message-in-chat";
 export { newFollowUpNotes } from "./new-follow-up-notes";
-export { upcomingFollowUp } from "./upcoming-follow-up";
+export { upcomingFollowUp } from "./upcoming-followup";
 export { referralMessage } from "./referral-message";

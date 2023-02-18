@@ -10,6 +10,7 @@ export * from "./Chat";
 export * from "./Cognito";
 export * from "./EnrollmentCoordinator";
 export * from "./Medicine";
+export * from "./Notifications";
 export * from "./Patient";
 export * from "./Payload";
 export * from "./Payment";
