@@ -1,3 +1,3 @@
 export enum DETAIL_TYPES {
-  NOTIFICATIONS = "NOTIFICATIONS",
+  NOTIFICATIONS = "Honeydew Email/SMS Notification Event",
 }
