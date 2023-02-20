@@ -1,6 +1,6 @@
 {
   "name": "honeydew-shared",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Honeydew common clients",
   "main": "",
   "scripts": {
@@ -10,7 +10,7 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint --fix . --ext .ts",
     "fix:all": "prettier --write . && tslint -p tsconfig.json --fix",
-    "aws:login": "aws codeartifact login --tool --profile honeydew npm --repository honeydew-shared --domain honeydew --domain-owner 882887517494 --region us-east-1",
+    "aws:login": "aws codeartifact login --tool npm --repository honeydew-shared --domain honeydew --domain-owner 882887517494 --region us-east-1",
     "build": "rimraf dist && tsc",
     "deploy": "npm run fix:all && npm run build && mkdir -p dist/src/ && cp -r package.json dist/src/ && npm publish dist/src/",
     "prepare": "husky install"
