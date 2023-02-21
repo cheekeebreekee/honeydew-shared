@@ -1,5 +1,5 @@
 import { DynamoDB } from "aws-sdk";
-import { Accutane } from "src/types/Accutane";
+import { Accutane } from "../../../../types";
 import { logInfo } from "../../../../utils/logger";
 import markIpledgeConsentAsConfirmedQuery from "../../queries/mark-ipledge-consent-as-confirmed";
 

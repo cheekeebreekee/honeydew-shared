@@ -1,5 +1,5 @@
 import { DynamoDB } from "aws-sdk";
-import { Patient } from "src/types/Patient";
+import { Patient } from "../../../../types";
 import { logInfo } from "../../../../utils/logger";
 import updateMultiAccListQuery from "../../queries/update-multi-acc-list";
 

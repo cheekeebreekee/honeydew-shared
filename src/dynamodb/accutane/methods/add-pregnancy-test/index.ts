@@ -1,5 +1,5 @@
 import { DynamoDB } from "aws-sdk";
-import { Accutane, PregnancyTest } from "src/types/Accutane";
+import { Accutane, PregnancyTest } from "../../../../types";
 import { DynamoDBService } from "../../../index";
 import { logError, logInfo } from "../../../../utils/logger";
 import addPregnancyTestQuery from "../../queries/add-pregnancy-test";

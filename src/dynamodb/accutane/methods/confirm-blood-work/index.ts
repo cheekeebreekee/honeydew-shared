@@ -1,5 +1,5 @@
 import { DynamoDB } from "aws-sdk";
-import { Accutane, BloodWork } from "src/types/Accutane";
+import { Accutane, BloodWork } from "../../../../types";
 import { DynamoDBService } from "../../../index";
 import { logError, logInfo } from "../../../../utils/logger";
 import confirmBloodWorkQuery from "../../queries/confirm-blood-work";

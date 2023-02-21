@@ -1,6 +1,5 @@
 import { DynamoDB } from "aws-sdk";
-import { Accutane, BirthControl } from "src/types/Accutane";
-import { Patient } from "src/types/Patient";
+import { Accutane, BirthControl, Patient } from "../../../../types";
 import { DynamoDBService } from "../../../index";
 import { logError, logInfo } from "../../../../utils/logger";
 import resetAccutaneTasksMaleQuery from "../../queries/reset-accutane-tasks-male";

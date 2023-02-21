@@ -1,6 +1,5 @@
 import { DynamoDB } from "aws-sdk";
-import { Accutane, IPledgeConsent } from "src/types/Accutane";
-import { Patient } from "src/types/Patient";
+import { Accutane, IPledgeConsent, Patient } from "../../../../types";
 import { DynamoDBService } from "../../../index";
 import { logError, logInfo } from "../../../../utils/logger";
 import updateIPledgeDetailsQuery from "../../queries/update-ipledge-details";

@@ -1,5 +1,5 @@
 import { DynamoDB } from "aws-sdk";
-import { BirthControl } from "src/types/Accutane";
+import { BirthControl } from "../../../types";
 import { ENV } from "../../../shared/constants";
 import { logInfo } from "../../../utils/logger";
 

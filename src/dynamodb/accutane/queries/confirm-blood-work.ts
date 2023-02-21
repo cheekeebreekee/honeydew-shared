@@ -1,5 +1,5 @@
 import { DynamoDB } from "aws-sdk";
-import { BloodWork } from "src/types/Accutane";
+import { BloodWork } from "../../../types";
 import { ENV } from "../../../shared/constants";
 import { logInfo } from "../../../utils/logger";
 

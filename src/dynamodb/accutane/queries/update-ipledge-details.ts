@@ -1,6 +1,5 @@
 import { DynamoDB } from "aws-sdk";
-import { Accutane } from "src/types/Accutane";
-import { Patient } from "src/types/Patient";
+import { Accutane } from "../../../types";
 import { ENV } from "../../../shared/constants";
 import { logInfo } from "../../../utils/logger";
 

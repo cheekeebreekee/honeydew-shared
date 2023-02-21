@@ -1,5 +1,5 @@
 import { DynamoDB } from "aws-sdk";
-import { Patient } from "src/types/Patient";
+import { Patient } from "../../../../types";
 import { InsurancceInfoPayload } from "../../../../types/Payload";
 import { logInfo } from "../../../../utils/logger";
 import updateInsuranceInfoQuery from "../../queries/update-insurance-info";

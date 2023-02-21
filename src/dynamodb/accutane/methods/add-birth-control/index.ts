@@ -1,8 +1,8 @@
 import { DynamoDB } from "aws-sdk";
-import { Accutane, BirthControl } from "src/types/Accutane";
 import { DynamoDBService } from "../../../index";
 import { logError, logInfo } from "../../../../utils/logger";
 import addBirthControlQuery from "../../queries/add-birth-control";
+import { BirthControl, Accutane } from "../../../../types";
 
 const dynamoDb = new DynamoDB.DocumentClient();
 

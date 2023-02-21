@@ -1,5 +1,5 @@
 import { DynamoDB } from "aws-sdk";
-import { Accutane } from "src/types/Accutane";
+import { Accutane } from "../../../types";
 import { ENV } from "../../../shared/constants";
 import { logInfo } from "../../../utils/logger";
 

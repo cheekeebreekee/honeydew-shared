@@ -1,5 +1,5 @@
 import { DynamoDB } from "aws-sdk";
-import { EnrollmentCoordinator } from "src/types/EnrollmentCoordinator";
+import { EnrollmentCoordinator } from "../../../../types";
 import { logInfo } from "../../../../utils/logger";
 import createEnrollmentCoordinatorQuery from "../../queries/create";
 

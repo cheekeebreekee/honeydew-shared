@@ -1,8 +1,8 @@
 import { DynamoDB } from "aws-sdk";
-import { EnrollmentCoordinator } from "src/types/EnrollmentCoordinator";
 import { DynamoDBService } from "../../../index";
 import { logError, logInfo } from "../../../../utils/logger";
 import updateEnrollmentCoordinatorQuery from "../../queries/update";
+import { EnrollmentCoordinator } from "../../../../types";
 
 const dynamoDb = new DynamoDB.DocumentClient();
 
