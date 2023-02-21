@@ -1,5 +1,5 @@
 import { SQS } from "aws-sdk";
-import { ENV } from "src/shared/constants";
+import { ENV } from "../shared";
 import { Patient } from "../types/Patient";
 import { logInfo } from "../utils/logger";
 
