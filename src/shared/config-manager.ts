@@ -1,4 +1,5 @@
 import { SSM } from "@aws-sdk/client-ssm";
+import { logDebug } from "../utils";
 
 enum CONFIG_TYPES {
   SECRETS = "secrets",
@@ -22,8 +23,12 @@ class ConfigManager {
   }
 
   private async loadConfig(type: CONFIG_TYPES): Promise<{ [p: string]: string }> {
+    const Name = `${process.env.BRAND}/${process.env.ENVIRONMENT}/${process.env.SERVICE}/${type}`;
+    logDebug("Loading SSM config", {
+      Name,
+    });
     const response = await this.ssm.getParameter({
-      Name: `${process.env.BRAND}/${process.env.ENV}/${process.env.SERVICE}/${type}`,
+      Name,
       WithDecryption: true,
     });
 
