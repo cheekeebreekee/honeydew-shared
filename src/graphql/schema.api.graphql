@@ -46,13 +46,15 @@ type Mutation {
     #upsertWithCalendlyData - TODO
 }
 
+type NoteCreatedBy {
+    id: String!
+    role: String!
+}
+
 input NoteInput {
     id: ID!
     createdAt: Number!
-    createdBy: {
-        id: String
-        role: String
-    }!
+    createdBy: NoteCreatedBy!
     text: String!
     type: String!
 }
@@ -176,10 +178,7 @@ type Account {
 type Note {
     id: ID! #(key - patientId#uuid)
     createdAt: Number
-    createdBy: {
-        id: String
-        role: String
-    }
+    createdBy: NoteCreatedBy!
     text: String
     type: String
 }
