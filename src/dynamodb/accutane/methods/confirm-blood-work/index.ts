@@ -6,10 +6,7 @@ import confirmBloodWorkQuery from "../../queries/confirm-blood-work";
 
 const dynamoDb = new DynamoDB.DocumentClient();
 
-export const confirmBloodWork = async (
-  patientId: string,
-  confirmed: boolean
-) => {
+export const confirmBloodWork = async (patientId: string, confirmed: boolean) => {
   logInfo("Confirming blood work of Accutane record", patientId);
 
   const accutane = await DynamoDBService.accutane.getByPatientId(patientId);

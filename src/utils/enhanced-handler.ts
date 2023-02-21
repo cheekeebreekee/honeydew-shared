@@ -1,13 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {
-  APIGatewayProxyEventV2,
-  APIGatewayProxyResultV2,
-  Handler,
-  SQSEvent,
-} from "aws-lambda";
-import { config } from "src/shared/config-manager";
+import { APIGatewayProxyEventV2, APIGatewayProxyResultV2, Handler, SQSEvent } from "aws-lambda";
 import { logError, logInfo } from "./logger";
 import { HttpResponse } from "./http-response";
+import { config } from "../shared";
 
 export const enhancedApiHandler =
   <T = APIGatewayProxyEventV2>(handler: Handler<T>): Handler =>

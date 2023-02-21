@@ -1,17 +1,9 @@
-import { publishEvent } from "src/events";
-import {
-  NotificationEvent,
-  NOTIFICATION_TYPES,
-  Patient,
-  Provider,
-} from "src/types";
-import { DETAIL_TYPES } from "src/events/detail-types";
-import { logDebug } from "src/utils";
+import { publishEvent } from "../../../events";
+import { DETAIL_TYPES } from "../../../events/detail-types";
+import { HoneydewNotificationEvent, NOTIFICATION_TYPES, Patient, Provider } from "../../../types";
+import { logDebug } from "../../../utils";
 
-export const appointmentBooked = async (
-  patient: Patient,
-  provider: Provider
-) => {
+export const appointmentBooked = async (patient: Patient, provider: Provider) => {
   logDebug("Sending email message to patient about booked appointment", {
     patient,
     provider,
@@ -22,10 +14,9 @@ export const appointmentBooked = async (
     "info@honeydewcare.com", // TODO: move to env config
   ];
 
-  if (patient.basicInfo.parentsEmail)
-    emails.push(patient.basicInfo.parentsEmail);
+  if (patient.basicInfo.parentsEmail) emails.push(patient.basicInfo.parentsEmail);
 
-  const payload: NotificationEvent = {
+  const payload: HoneydewNotificationEvent = {
     type: NOTIFICATION_TYPES.EMAIL,
     targetAddresses: emails,
     template: "appointment-booked",

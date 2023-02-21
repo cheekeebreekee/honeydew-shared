@@ -3,10 +3,7 @@ import { ENV } from "../../../shared/constants";
 import { SkinImages } from "../../../types/Patient";
 import { logInfo } from "../../../utils/logger";
 
-export default (
-  id: string,
-  skinImages: SkinImages[]
-): DynamoDB.DocumentClient.UpdateItemInput => {
+export default (id: string, skinImages: SkinImages[]): DynamoDB.DocumentClient.UpdateItemInput => {
   const query = {
     TableName: ENV.USERS_TABLE,
     Key: {

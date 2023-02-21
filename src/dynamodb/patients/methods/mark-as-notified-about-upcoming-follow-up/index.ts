@@ -6,16 +6,12 @@ import setSkinImagesQuery from "../../queries/set-skin-images";
 
 const dynamoDb = new DynamoDB.DocumentClient();
 
-export const markAsNotifiedAboutUpcomingFollowUp = async (
-  payload: Patient | string
-) => {
+export const markAsNotifiedAboutUpcomingFollowUp = async (payload: Patient | string) => {
   logInfo("Marking patient as notified about upcoming follow up in DB", {
     payload,
   });
   const patient =
-    typeof payload === "string"
-      ? await DynamoDBService.patients.get(payload)
-      : payload;
+    typeof payload === "string" ? await DynamoDBService.patients.get(payload) : payload;
   logInfo("Patient to update", patient);
 
   const { skinImages } = patient.medicalBackground;

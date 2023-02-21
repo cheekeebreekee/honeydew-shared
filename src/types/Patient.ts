@@ -129,11 +129,7 @@ export interface ShippingInfo {
   state: string;
 }
 
-export type ChatIdentityType =
-  | "user"
-  | "provider"
-  | "care-coordinator"
-  | "admin";
+export type ChatIdentityType = "user" | "provider" | "care-coordinator" | "admin";
 
 export type ChatIdentity = {
   [p in ChatIdentityType]?: {

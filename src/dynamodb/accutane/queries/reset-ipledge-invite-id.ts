@@ -2,9 +2,7 @@ import { DynamoDB } from "aws-sdk";
 import { ENV } from "../../../shared/constants";
 import { logInfo } from "../../../utils/logger";
 
-export default (
-  accutaneId: string
-): DynamoDB.DocumentClient.UpdateItemInput => {
+export default (accutaneId: string): DynamoDB.DocumentClient.UpdateItemInput => {
   const query = {
     TableName: ENV.ACCUTANE_TABLE,
     Key: {

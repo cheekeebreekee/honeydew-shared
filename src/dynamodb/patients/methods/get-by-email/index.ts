@@ -7,9 +7,7 @@ const dynamoDb = new DynamoDB.DocumentClient();
 
 export const getByEmail = async (email: string): Promise<Patient> => {
   logInfo("Getting patient from DB by email", { email });
-  const { Items } = await dynamoDb
-    .scan(getByPatientEmailQuery(email))
-    .promise();
+  const { Items } = await dynamoDb.scan(getByPatientEmailQuery(email)).promise();
 
   if (!Items) {
     const message = `Patient with email ${email} is not found`;

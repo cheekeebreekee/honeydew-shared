@@ -21,9 +21,7 @@ class ConfigManager {
     };
   }
 
-  private async loadConfig(
-    type: CONFIG_TYPES
-  ): Promise<{ [p: string]: string }> {
+  private async loadConfig(type: CONFIG_TYPES): Promise<{ [p: string]: string }> {
     const response = await this.ssm
       .getParameter({
         Name: `${process.env.BRAND}/${process.env.ENV}/${process.env.SERVICE}/${type}`,
@@ -47,9 +45,7 @@ class ConfigManager {
 
   private getValue(type: CONFIG_TYPES, key: string) {
     if (!this.store[type][key]) {
-      throw new Error(
-        `Configuration property "${key}" is not found in ${type}`
-      );
+      throw new Error(`Configuration property "${key}" is not found in ${type}`);
     }
 
     return this.store[type][key];

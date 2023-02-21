@@ -6,15 +6,10 @@ import setSkinImagesQuery from "../../queries/set-skin-images";
 
 const dynamoDb = new DynamoDB.DocumentClient();
 
-export const setFollowUp = async (
-  payload: Patient | string,
-  followUp: SkinImages
-) => {
+export const setFollowUp = async (payload: Patient | string, followUp: SkinImages) => {
   logInfo("Setting new follow up to patient in DB", { payload, followUp });
   const patient =
-    typeof payload === "string"
-      ? await DynamoDBService.patients.get(payload)
-      : payload;
+    typeof payload === "string" ? await DynamoDBService.patients.get(payload) : payload;
   logInfo("Patient to update", patient);
 
   const { skinImages } = patient.medicalBackground;

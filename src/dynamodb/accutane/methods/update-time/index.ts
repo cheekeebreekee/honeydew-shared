@@ -10,9 +10,7 @@ export const updateTime = async (id: string, updatedTime: number) => {
     updatedTime,
   });
 
-  const updatedNotification = await dynamoDb
-    .update(updateTimeQuery(id, updatedTime))
-    .promise();
+  const updatedNotification = await dynamoDb.update(updateTimeQuery(id, updatedTime)).promise();
 
   logInfo("Time was updated successfully", updatedNotification);
 };

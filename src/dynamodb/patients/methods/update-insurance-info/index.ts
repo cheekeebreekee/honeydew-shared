@@ -6,10 +6,7 @@ import updateInsuranceInfoQuery from "../../queries/update-insurance-info";
 
 const dynamoDb = new DynamoDB.DocumentClient();
 
-export const updateInsuranceInfo = async (
-  id: string,
-  insuranceInfo: InsurancceInfoPayload
-) => {
+export const updateInsuranceInfo = async (id: string, insuranceInfo: InsurancceInfoPayload) => {
   logInfo("Updating insurance info of the patient in DB", {
     id,
     insuranceInfo,

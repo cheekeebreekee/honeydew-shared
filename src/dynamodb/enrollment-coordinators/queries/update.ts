@@ -14,8 +14,7 @@ export default ({
     Key: {
       id,
     },
-    UpdateExpression:
-      "set #firstName=:FIRST_NAME, #lastName=:LAST_NAME, #phone=:PHONE",
+    UpdateExpression: "set #firstName=:FIRST_NAME, #lastName=:LAST_NAME, #phone=:PHONE",
     ExpressionAttributeNames: {
       "#firstName": "firstName",
       "#lastName": "lastName",

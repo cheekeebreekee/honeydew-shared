@@ -1,19 +1,12 @@
-import { publishEvent } from "src/events";
-import { DETAIL_TYPES } from "src/events/detail-types";
-import {
-  CareCoordinator,
-  NotificationEvent,
-  NOTIFICATION_TYPES,
-} from "src/types";
-import { logDebug } from "src/utils";
+import { publishEvent } from "../../../events";
+import { DETAIL_TYPES } from "../../../events/detail-types";
+import { CareCoordinator, HoneydewNotificationEvent, NOTIFICATION_TYPES } from "../../../types";
+import { logDebug } from "../../../utils";
 
 export const newVisitNotes = async (careCoordinator: CareCoordinator) => {
-  logDebug(
-    "Sending email to care coordinator about new visit notes submitted",
-    careCoordinator
-  );
+  logDebug("Sending email to care coordinator about new visit notes submitted", careCoordinator);
 
-  const payload: NotificationEvent = {
+  const payload: HoneydewNotificationEvent = {
     type: NOTIFICATION_TYPES.EMAIL,
     targetAddresses: [careCoordinator.email],
     template: "new-visit-notes",

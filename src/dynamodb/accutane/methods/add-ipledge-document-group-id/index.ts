@@ -5,19 +5,13 @@ import addIpledgeDocumentGroupIdQuery from "../../queries/add-ipledge-document-g
 
 const dynamoDb = new DynamoDB.DocumentClient();
 
-export const addIpledgeDocumentGroupId = async (
-  accutaneId: string,
-  documentGroupId: string
-) => {
+export const addIpledgeDocumentGroupId = async (accutaneId: string, documentGroupId: string) => {
   logInfo("Adding IPledge document group ID", { documentGroupId });
 
   const { Attributes } = await dynamoDb
     .update(addIpledgeDocumentGroupIdQuery(accutaneId, documentGroupId))
     .promise();
 
-  logInfo(
-    "IPledge document group ID was successfully added to accutane record",
-    Attributes
-  );
+  logInfo("IPledge document group ID was successfully added to accutane record", Attributes);
   return Attributes as Accutane;
 };

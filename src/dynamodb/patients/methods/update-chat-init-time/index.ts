@@ -26,8 +26,7 @@ export const updateChatInitTime = async ({
   const chatPayload: ChatInfo = {
     ...(patient.chatInfo || {}),
     [identity]: {
-      chatInitTimestamp:
-        initTimestamp || patient.chatInfo?.[identity]?.chatInitTimestamp,
+      chatInitTimestamp: initTimestamp || patient.chatInfo?.[identity]?.chatInitTimestamp,
       highlight: highlight || patient.chatInfo?.[identity]?.highlight,
     },
     conversationId: patient.chatInfo?.conversationId as string,
@@ -35,9 +34,7 @@ export const updateChatInitTime = async ({
 
   logInfo("Updated chat payload data", chatPayload);
 
-  const { Attributes } = await dynamoDb
-    .update(updateChatQuery(id, chatPayload))
-    .promise();
+  const { Attributes } = await dynamoDb.update(updateChatQuery(id, chatPayload)).promise();
 
   logInfo("Patient has been updated successfully");
   return Attributes as Patient;

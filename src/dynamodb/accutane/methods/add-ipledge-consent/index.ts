@@ -39,9 +39,6 @@ export const addIpledgeConsent = async (
     )
     .promise();
 
-  logInfo(
-    "IPledge consent was successfully added to accutane record",
-    Attributes
-  );
+  logInfo("IPledge consent was successfully added to accutane record", Attributes);
   return Attributes as Accutane;
 };

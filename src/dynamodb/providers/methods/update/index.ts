@@ -15,9 +15,7 @@ export const update = async (providerPartial: Partial<Provider>) => {
     throw new Error(message);
   }
 
-  const provider = await DynamoDBService.providers.get(
-    providerPartial.id || ""
-  );
+  const provider = await DynamoDBService.providers.get(providerPartial.id || "");
 
   logInfo("Provider to update", provider);
 
@@ -27,8 +25,6 @@ export const update = async (providerPartial: Partial<Provider>) => {
   };
 
   logInfo("Updated provider data", updatedProvider);
-  const { Attributes } = await dynamoDb
-    .update(updateProviderQuery(updatedProvider))
-    .promise();
+  const { Attributes } = await dynamoDb.update(updateProviderQuery(updatedProvider)).promise();
   return Attributes as Provider;
 };

@@ -26,9 +26,7 @@ export const getAll = async (archived?: boolean): Promise<Patient[]> => {
   if (Items) {
     logInfo("Found patients count", { count: Items.length });
     if (!archived) {
-      const filteredPatientsList = (Items as Patient[]).filter(
-        (patient) => !patient.archived
-      );
+      const filteredPatientsList = (Items as Patient[]).filter((patient) => !patient.archived);
       logInfo("Filtering out archived patients", {
         filtered: Items.length - filteredPatientsList.length,
         remaining: filteredPatientsList.length,

@@ -8,9 +8,7 @@ const dynamoDb = new DynamoDB.DocumentClient();
 
 export const update = async (_treatmentPlan: TreatmentPlan) => {
   logInfo("Updating treatment plan in DB", { _treatmentPlan });
-  const treatmentPlan = await DynamoDBService.treatmentPlans.get(
-    _treatmentPlan.id
-  );
+  const treatmentPlan = await DynamoDBService.treatmentPlans.get(_treatmentPlan.id);
   logInfo("Treatment plan to update", treatmentPlan);
   const updatedTreatmentPlan = {
     ...treatmentPlan,

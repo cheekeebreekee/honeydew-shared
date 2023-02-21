@@ -19,9 +19,7 @@ export const addBloodWork = async (id: string, bloodWork: BloodWork) => {
 
   logInfo("Adding blood work info to accutane record", accutane);
 
-  const { Attributes } = await dynamoDb
-    .update(addBloodWorkQuery(id, bloodWork))
-    .promise();
+  const { Attributes } = await dynamoDb.update(addBloodWorkQuery(id, bloodWork)).promise();
 
   logInfo("blood work was successfully added to accutane record", Attributes);
   return Attributes as Accutane;

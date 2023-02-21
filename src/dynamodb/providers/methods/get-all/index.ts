@@ -7,9 +7,7 @@ const dynamoDb = new DynamoDB.DocumentClient();
 
 export const getAll = async (): Promise<Provider[]> => {
   logInfo("Getting all providers from DB");
-  const { Items } = await dynamoDb
-    .scan({ TableName: ENV.PROVIDERS_TABLE })
-    .promise();
+  const { Items } = await dynamoDb.scan({ TableName: ENV.PROVIDERS_TABLE }).promise();
 
   if (Items) {
     logInfo("Found providers count", { count: Items.length });

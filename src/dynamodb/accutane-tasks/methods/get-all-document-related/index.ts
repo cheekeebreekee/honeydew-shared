@@ -5,16 +5,12 @@ import getAllDocumentRelatedTasksQuery from "../../queries/get-all-document-rela
 
 const dynamoDb = new DynamoDB.DocumentClient();
 
-export const getAllDocumentRelated = async (
-  documentId: string
-): Promise<AccutaneTask[]> => {
+export const getAllDocumentRelated = async (documentId: string): Promise<AccutaneTask[]> => {
   logInfo("Getting document related tasks from DB", {
     documentId,
   });
 
-  const { Items } = await dynamoDb
-    .scan(getAllDocumentRelatedTasksQuery(documentId))
-    .promise();
+  const { Items } = await dynamoDb.scan(getAllDocumentRelatedTasksQuery(documentId)).promise();
 
   if (!Items?.length) {
     const message = `Document related tasks wasn't found`;

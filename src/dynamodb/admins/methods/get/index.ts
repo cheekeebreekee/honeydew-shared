@@ -7,9 +7,7 @@ const dynamoDb = new DynamoDB.DocumentClient();
 
 export const get = async (id: string): Promise<EnrollmentCoordinator> => {
   logInfo("Getting admin from DB", { id });
-  const { Item } = await dynamoDb
-    .get(getEnrollmentCoordinatorQuery(id))
-    .promise();
+  const { Item } = await dynamoDb.get(getEnrollmentCoordinatorQuery(id)).promise();
 
   if (!Item) {
     const message = `Admin with ID ${id} is not found`;

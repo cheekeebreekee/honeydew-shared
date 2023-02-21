@@ -2,13 +2,8 @@ import { DynamoDB } from "aws-sdk";
 import { ENV } from "../../../shared/constants";
 import { logInfo } from "../../../utils/logger";
 
-const generateFilterExpression = (
-  employeeId: string,
-  patientId?: string,
-  documentId?: string
-) => {
-  if (employeeId && patientId && documentId)
-    return `begins_with(compositeKey, :id)`;
+const generateFilterExpression = (employeeId: string, patientId?: string, documentId?: string) => {
+  if (employeeId && patientId && documentId) return `begins_with(compositeKey, :id)`;
   return `contains(compositeKey, :employeeId)`;
 };
 
@@ -33,11 +28,7 @@ export default (
 ): DynamoDB.DocumentClient.QueryInput => {
   const query = {
     TableName: ENV.ACCUTANE_TASKS_TABLE,
-    FilterExpression: generateFilterExpression(
-      employeeId,
-      patientId,
-      documentId
-    ),
+    FilterExpression: generateFilterExpression(employeeId, patientId, documentId),
     ExpressionAttributeValues: generateFilterExpressionAttributeValue(
       employeeId,
       patientId,

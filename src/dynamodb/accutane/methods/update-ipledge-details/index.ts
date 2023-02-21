@@ -9,12 +9,7 @@ const dynamoDb = new DynamoDB.DocumentClient();
 
 export const updateIPledgeDetails = async (
   patient: Patient,
-  {
-    lastConfirmationDate,
-    nextConfirmationDate,
-    enrollmentDate,
-    remsNumber,
-  }: Partial<Accutane>
+  { lastConfirmationDate, nextConfirmationDate, enrollmentDate, remsNumber }: Partial<Accutane>
 ) => {
   logInfo("Updating IPledge details of Accutane record", patient.id);
 

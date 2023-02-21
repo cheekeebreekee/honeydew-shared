@@ -11,9 +11,7 @@ export const setAccutane = async (id: string, accutaneFlag: boolean) => {
   const { Item: patient } = await dynamoDb.get(getPatientQuery(id)).promise();
   logInfo("Patient to set accutane flag to", patient);
 
-  const { Attributes } = await dynamoDb
-    .update(setAccutaneFlagQuery(id, accutaneFlag))
-    .promise();
+  const { Attributes } = await dynamoDb.update(setAccutaneFlagQuery(id, accutaneFlag)).promise();
 
   logInfo("Accutane flag has been set to patient in DB");
   return Attributes as Patient;

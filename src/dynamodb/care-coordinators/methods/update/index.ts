@@ -6,9 +6,7 @@ import updateCareCoordinatorQuery from "../../queries/update";
 
 const dynamoDb = new DynamoDB.DocumentClient();
 
-export const update = async (
-  careCoordinatorPartial: Partial<CareCoordinator>
-) => {
+export const update = async (careCoordinatorPartial: Partial<CareCoordinator>) => {
   logInfo("Updating care coordinator", careCoordinatorPartial);
 
   if (!careCoordinatorPartial.id) {
@@ -17,9 +15,7 @@ export const update = async (
     throw new Error(message);
   }
 
-  const careCoordinator = await DynamoDBService.careCoordinators.get(
-    careCoordinatorPartial.id
-  );
+  const careCoordinator = await DynamoDBService.careCoordinators.get(careCoordinatorPartial.id);
 
   logInfo("Care coordinator to update", careCoordinator);
 

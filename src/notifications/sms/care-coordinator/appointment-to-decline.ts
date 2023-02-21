@@ -1,21 +1,15 @@
-import { NotificationEvent, NOTIFICATION_TYPES } from "src/types";
-import { getDatePretty, getPatientInitials } from "src/utils";
+import { HoneydewNotificationEvent, NOTIFICATION_TYPES } from "../../../types";
 import { CareCoordinator } from "../../../types/CareCoordinator";
 import { Patient } from "../../../types/Patient";
+import { getPatientInitials, getDatePretty } from "../../../utils";
 import { logDebug } from "../../../utils/logger";
 
-export const appointmentToDecline = async (
-  careCoordinator: CareCoordinator,
-  patient: Patient
-) => {
+export const appointmentToDecline = async (careCoordinator: CareCoordinator, patient: Patient) => {
   const { firstName, lastName, phone } = careCoordinator;
-  logDebug(
-    "Sending SMS message to care coordinator about appointment to decline",
-    {
-      careCoordinator,
-    }
-  );
-  const payload: NotificationEvent = {
+  logDebug("Sending SMS message to care coordinator about appointment to decline", {
+    careCoordinator,
+  });
+  const payload: HoneydewNotificationEvent = {
     type: NOTIFICATION_TYPES.SMS,
     targetAddresses: [phone],
     template: "appointment-to-decline",

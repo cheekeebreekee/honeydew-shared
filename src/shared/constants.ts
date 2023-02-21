@@ -29,28 +29,19 @@ export const ENV: { [p: string]: string } = {
   USERS_TABLE: process.env.USERS_TABLE as string,
   PROVIDERS_TABLE: process.env.PROVIDERS_TABLE as string,
   CARE_COORDINATORS_TABLE: process.env.CARE_COORDINATORS_TABLE as string,
-  ENROLLMENT_COORDINATORS_TABLE: process.env
-    .ENROLLMENT_COORDINATORS_TABLE as string,
+  ENROLLMENT_COORDINATORS_TABLE: process.env.ENROLLMENT_COORDINATORS_TABLE as string,
   MEDICINE_TABLE: process.env.MEDICINE_TABLE as string,
   TREATMENT_PLANS_TABLE: process.env.TREATMENT_PLANS_TABLE as string,
   ACCUTANE_TABLE: process.env.ACCUTANE_TABLE as string,
   STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY as string,
-  ACCUTANE_DOCUMENTS_BUCKET_NAME: process.env
-    .ACCUTANE_DOCUMENTS_BUCKET_NAME as string,
+  ACCUTANE_DOCUMENTS_BUCKET_NAME: process.env.ACCUTANE_DOCUMENTS_BUCKET_NAME as string,
   ACCUTANE_DOCUMENTS_TABLE: process.env.ACCUTANE_DOCUMENTS_TABLE as string,
-  ACCUTANE_NOTIFICATIONS_TABLE: process.env
-    .ACCUTANE_NOTIFICATIONS_TABLE as string,
+  ACCUTANE_NOTIFICATIONS_TABLE: process.env.ACCUTANE_NOTIFICATIONS_TABLE as string,
   ACCUTANE_TASKS_TABLE: process.env.ACCUTANE_TASKS_TABLE as string,
   ACCUTANE_PRICE_ID: process.env.ACCUTANE_PRICE_ID as string,
   ADMINS_TABLE: process.env.ADMINS_TABLE as string,
   SIGN_NOW_TOKEN: process.env.SIGN_NOW_TOKEN as string,
 };
-
-// validation for environment variables
-Object.keys(ENV).forEach((key) => {
-  if (!ENV[key])
-    throw new Error(`Missing required environment parameter "${key}"`);
-});
 
 const development = {
   ADMINS_LIST: [
@@ -86,5 +77,4 @@ const production = {
   ],
 };
 
-export const { ADMINS_LIST } =
-  process.env.ENVIRONMENT === "PROD" ? production : development;
+export const { ADMINS_LIST } = process.env.ENVIRONMENT === "PROD" ? production : development;

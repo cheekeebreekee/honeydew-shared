@@ -7,8 +7,6 @@ const dynamoDb = new DynamoDB.DocumentClient();
 
 export const create = async (enrollmentCoordinator: EnrollmentCoordinator) => {
   logInfo("Creating enrollment coordinator in DB", enrollmentCoordinator);
-  await dynamoDb
-    .put(createEnrollmentCoordinatorQuery(enrollmentCoordinator))
-    .promise();
+  await dynamoDb.put(createEnrollmentCoordinatorQuery(enrollmentCoordinator)).promise();
   logInfo("Created successfully");
 };

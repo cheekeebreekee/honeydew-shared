@@ -1,11 +1,11 @@
-import { logDebug } from "src/utils";
-import { NotificationEvent, NOTIFICATION_TYPES } from "src/types";
-import { DETAIL_TYPES } from "src/events/detail-types";
-import { publishEvent } from "src/events";
+import { publishEvent } from "../../events";
+import { DETAIL_TYPES } from "../../events/detail-types";
+import { HoneydewNotificationEvent, NOTIFICATION_TYPES } from "../../types";
+import { logDebug } from "../../utils";
 
 export const newMessageInChat = async (phone: string) => {
   logDebug("Sending SMS message about new message in chat");
-  const payload: NotificationEvent = {
+  const payload: HoneydewNotificationEvent = {
     type: NOTIFICATION_TYPES.SMS,
     targetAddresses: [phone],
     template: "new-chat-message",

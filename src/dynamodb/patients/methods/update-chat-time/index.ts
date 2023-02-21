@@ -6,11 +6,7 @@ import { DynamoDBService } from "../../../index";
 
 const dynamoDb = new DynamoDB.DocumentClient();
 
-export const updateChatTime = async (
-  id: string,
-  role: string,
-  timestamp: string
-) => {
+export const updateChatTime = async (id: string, role: string, timestamp: string) => {
   logInfo("Update chat time of the patient in DB", { id, role, timestamp });
   const patient = await DynamoDBService.patients.get(id);
   logInfo("Patient to update", patient);
@@ -22,9 +18,7 @@ export const updateChatTime = async (
 
   logInfo("Updated chat payload data", chatPayload);
 
-  const { Attributes } = await dynamoDb
-    .update(updateChatTimeQuery(id, chatPayload))
-    .promise();
+  const { Attributes } = await dynamoDb.update(updateChatTimeQuery(id, chatPayload)).promise();
   logInfo("Patient has been updated successfully");
   return Attributes as Patient;
 };

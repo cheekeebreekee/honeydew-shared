@@ -1,4 +1,4 @@
-import { Patient } from "src/types/Patient";
+import { Patient } from "../types";
 
 export function isAppointmentCancelled(patient: Patient) {
   const lastAppointmentStatus = patient.appointmentStatus

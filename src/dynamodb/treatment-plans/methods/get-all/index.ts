@@ -7,9 +7,7 @@ const dynamoDb = new DynamoDB.DocumentClient();
 
 export const getAll = async () => {
   logInfo("Getting all treatment plans from DB");
-  const { Items } = await dynamoDb
-    .scan({ TableName: ENV.TREATMENT_PLANS_TABLE })
-    .promise();
+  const { Items } = await dynamoDb.scan({ TableName: ENV.TREATMENT_PLANS_TABLE }).promise();
 
   logInfo("Found treatment plans count", {
     count: Items?.length,

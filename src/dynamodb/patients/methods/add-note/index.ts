@@ -17,9 +17,7 @@ export const addNote = async (id: string, note: PatientNote) => {
 
   logInfo("Updated notes data", updatedNotes);
 
-  const { Attributes } = await dynamoDb
-    .update(updateNotesQuery(id, updatedNotes))
-    .promise();
+  const { Attributes } = await dynamoDb.update(updateNotesQuery(id, updatedNotes)).promise();
 
   logInfo("New note has been added to patient in DB");
   return Attributes as Patient;

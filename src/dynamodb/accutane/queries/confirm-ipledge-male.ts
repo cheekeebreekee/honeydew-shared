@@ -60,8 +60,7 @@ export default (
       ":CONFIRMED": confirmed,
       ":COMPLETED": true, // If CC or Admin confirms IPledge, all outstanding tasks related to the previous next confirmation date should be resolved (i.e. “get blood work”, “confirm forms of pregnancy prevention”, etc.). They should only reappear 5 days before the next confirmation date. Those tasks are to get to a confirmation, so once the patient is confirmed, those tasks are irrelevant and the clock resets
       ":NEXT_CONFIRMATION_DATE": new Date(
-        new Date().getTime() +
-          NEXT_CONFIRMATION_DATE_OFFSET * 24 * 60 * 60 * 1000
+        new Date().getTime() + NEXT_CONFIRMATION_DATE_OFFSET * 24 * 60 * 60 * 1000
       ).toISOString(),
       ":LAST_CONFIRMATION_DATE": new Date().toISOString(),
     },

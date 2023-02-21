@@ -3,9 +3,7 @@ import { AccutaneTask } from "src/types/AccutaneTask";
 import { ENV } from "../../../shared/constants";
 import { logInfo } from "../../../utils/logger";
 
-export default (
-  tasks: AccutaneTask[]
-): DynamoDB.DocumentClient.BatchWriteItemInput => {
+export default (tasks: AccutaneTask[]): DynamoDB.DocumentClient.BatchWriteItemInput => {
   const query = {
     RequestItems: {
       [ENV.ACCUTANE_TASKS_TABLE]: tasks.map((task) => ({

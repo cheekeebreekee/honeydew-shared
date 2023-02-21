@@ -3,10 +3,7 @@ import { Accutane } from "src/types/Accutane";
 import { ENV } from "../../../shared/constants";
 import { logInfo } from "../../../utils/logger";
 
-export default (
-  accutaneId: string,
-  inviteId: string
-): DynamoDB.DocumentClient.UpdateItemInput => {
+export default (accutaneId: string, inviteId: string): DynamoDB.DocumentClient.UpdateItemInput => {
   const query = {
     TableName: ENV.ACCUTANE_TABLE,
     Key: {

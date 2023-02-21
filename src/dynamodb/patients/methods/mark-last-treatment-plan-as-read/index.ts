@@ -18,16 +18,13 @@ function markAsRead(issuer: string) {
       issuer,
     });
     const patient =
-      typeof payload === "string"
-        ? await DynamoDBService.patients.get(payload)
-        : payload;
+      typeof payload === "string" ? await DynamoDBService.patients.get(payload) : payload;
     logInfo("Patient to update", patient);
 
     const { skinImages } = patient.medicalBackground;
 
     if (!skinImages) {
-      const message =
-        "Cannot mark treatment plan as read: patient have no follow ups";
+      const message = "Cannot mark treatment plan as read: patient have no follow ups";
       logError(message, patient);
       throw new Error(message);
     }
@@ -35,8 +32,7 @@ function markAsRead(issuer: string) {
     const { treatmentPlanData } = skinImages[skinImages.length - 1];
 
     if (!treatmentPlanData) {
-      const message =
-        "Cannot mark treatment plan as read: treatment plan is not found";
+      const message = "Cannot mark treatment plan as read: treatment plan is not found";
       logError(message, patient);
       throw new Error(message);
     }

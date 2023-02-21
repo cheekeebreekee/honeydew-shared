@@ -1,8 +1,8 @@
-import { publishEvent } from "src/events";
-import { DETAIL_TYPES } from "src/events/detail-types";
-import { SUBSCRIPTIONS_PRETTY } from "src/shared";
-import { NotificationEvent, NOTIFICATION_TYPES, Patient } from "src/types";
-import { logDebug } from "src/utils";
+import { publishEvent } from "../../../events";
+import { DETAIL_TYPES } from "../../../events/detail-types";
+import { SUBSCRIPTIONS_PRETTY } from "../../../shared";
+import { HoneydewNotificationEvent, NOTIFICATION_TYPES, Patient } from "../../../types";
+import { logDebug } from "../../../utils";
 
 export const membershipConfirmation = async (
   patient: Patient,
@@ -19,10 +19,9 @@ export const membershipConfirmation = async (
   });
 
   const emails = [patient.email];
-  if (patient.basicInfo.parentsEmail)
-    emails.push(patient.basicInfo.parentsEmail);
+  if (patient.basicInfo.parentsEmail) emails.push(patient.basicInfo.parentsEmail);
 
-  const payload: NotificationEvent = {
+  const payload: HoneydewNotificationEvent = {
     type: NOTIFICATION_TYPES.EMAIL,
     targetAddresses: emails,
     template: "membership-confirmation",

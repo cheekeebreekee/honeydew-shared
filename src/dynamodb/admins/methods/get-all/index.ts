@@ -7,9 +7,7 @@ const dynamoDb = new DynamoDB.DocumentClient();
 
 export const getAll = async (): Promise<EnrollmentCoordinator[]> => {
   logInfo("Getting all admins from DB");
-  const { Items } = await dynamoDb
-    .scan({ TableName: ENV.ADMIBS_TABLE })
-    .promise();
+  const { Items } = await dynamoDb.scan({ TableName: ENV.ADMIBS_TABLE }).promise();
 
   if (Items) {
     logInfo("Admins found", {

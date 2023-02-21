@@ -7,9 +7,7 @@ const dynamoDb = new DynamoDB.DocumentClient();
 
 export const setMeetingLink = async (id: string, link: string | null) => {
   logInfo("Set meeting link in DB", { id, link });
-  const { Attributes } = await dynamoDb
-    .update(setMeetingLinkQuery(id, link))
-    .promise();
+  const { Attributes } = await dynamoDb.update(setMeetingLinkQuery(id, link)).promise();
   logInfo("Patient has been updated successfully");
   return Attributes as Patient;
 };

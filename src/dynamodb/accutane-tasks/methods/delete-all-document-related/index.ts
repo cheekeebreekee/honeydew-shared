@@ -5,9 +5,7 @@ import deleteAllDocumentRelatedTasksQuery from "../../queries/delete-all-documen
 
 const dynamoDb = new DynamoDB.DocumentClient();
 
-export const deleteAllDocumentRelated = async (
-  tasks: AccutaneTask[]
-): Promise<void> => {
+export const deleteAllDocumentRelated = async (tasks: AccutaneTask[]): Promise<void> => {
   logInfo("Deleting document related tasks from DB", {
     tasks,
   });

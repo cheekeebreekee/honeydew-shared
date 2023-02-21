@@ -22,17 +22,14 @@ export default (
     Key: {
       id,
     },
-    UpdateExpression:
-      "set #ttl=:TTL, #nextConfirmationDate=:NEXT_CONFIRMATION_DATE",
+    UpdateExpression: "set #ttl=:TTL, #nextConfirmationDate=:NEXT_CONFIRMATION_DATE",
     ExpressionAttributeNames: {
       "#ttl": "ttl",
       "#nextConfirmationDate": "nextConfirmationDate",
     },
     ExpressionAttributeValues: {
       ":TTL": shiftedTtl,
-      ":NEXT_CONFIRMATION_DATE": new Date(
-        shiftedNextConfirmationDate
-      ).toISOString(),
+      ":NEXT_CONFIRMATION_DATE": new Date(shiftedNextConfirmationDate).toISOString(),
     },
     ReturnValues: "ALL_NEW",
   };

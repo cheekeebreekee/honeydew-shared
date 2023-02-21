@@ -1,21 +1,18 @@
-import { NotificationEvent, NOTIFICATION_TYPES } from "src/types";
 import { trimPhoneNumber } from "../../../utils/trim-phone-number";
 import { CareCoordinator } from "../../../types/CareCoordinator";
 import { Patient } from "../../../types/Patient";
 import { getDatePretty } from "../../../utils/get-date-pretty";
 import { getPatientInitials } from "../../../utils/get-patient-initials";
 import { logDebug } from "../../../utils/logger";
+import { HoneydewNotificationEvent, NOTIFICATION_TYPES } from "../../../types";
 
-export const newAppointment = async (
-  careCoordinator: CareCoordinator,
-  patient: Patient
-) => {
+export const newAppointment = async (careCoordinator: CareCoordinator, patient: Patient) => {
   const { firstName, lastName, phone } = careCoordinator;
   logDebug("Sending SMS message to care coordinator about new appointment", {
     careCoordinator,
     patient,
   });
-  const payload: NotificationEvent = {
+  const payload: HoneydewNotificationEvent = {
     type: NOTIFICATION_TYPES.SMS,
     targetAddresses: [trimPhoneNumber(phone)],
     template: "new-appointment",

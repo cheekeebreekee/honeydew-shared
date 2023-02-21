@@ -17,9 +17,7 @@ export const getAllMiscellaneous = async (
   });
 
   const { Items } = await dynamoDb
-    .scan(
-      getAllMiscellaneousAccutaneTasksQuery(employeeId, patientId, documentId)
-    )
+    .scan(getAllMiscellaneousAccutaneTasksQuery(employeeId, patientId, documentId))
     .promise();
 
   if (!Items?.length) {

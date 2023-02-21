@@ -8,12 +8,7 @@ const NEXT_CONFIRMATION_DATE_OFFSET = 30;
 
 export default (
   id: string,
-  {
-    lastConfirmationDate,
-    nextConfirmationDate,
-    enrollmentDate,
-    remsNumber,
-  }: Partial<Accutane>
+  { lastConfirmationDate, nextConfirmationDate, enrollmentDate, remsNumber }: Partial<Accutane>
 ): DynamoDB.DocumentClient.UpdateItemInput => {
   const query = {
     TableName: ENV.ACCUTANE_TABLE,

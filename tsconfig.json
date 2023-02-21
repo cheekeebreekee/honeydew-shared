@@ -14,7 +14,6 @@
     "incremental": true,
     "watch": false,
     "module": "CommonJS",
-    "baseUrl": "./",
     "declaration": true,
   },
   "exclude": [
@@ -23,7 +22,5 @@
     "./node_modules/*",
     ".webpack"
   ],
-  "include": [
-    "src"
-, "../acneaway-backend/src/services/pdf-generator.ts"  ]
+  "include": ["src"]
 }

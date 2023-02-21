@@ -6,7 +6,7 @@ export enum NOTIFICATION_TYPES {
 
 export type NotificationPayload = any;
 
-export interface NotificationEvent {
+export interface HoneydewNotificationEvent {
   type: NOTIFICATION_TYPES;
   template: string;
   data: NotificationPayload;

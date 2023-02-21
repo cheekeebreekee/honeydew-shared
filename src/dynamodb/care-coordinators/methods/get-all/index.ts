@@ -7,9 +7,7 @@ const dynamoDb = new DynamoDB.DocumentClient();
 
 export const getAll = async (): Promise<CareCoordinator[]> => {
   logInfo("Getting all care coordinators from DB");
-  const { Items } = await dynamoDb
-    .scan({ TableName: ENV.CARE_COORDINATORS_TABLE })
-    .promise();
+  const { Items } = await dynamoDb.scan({ TableName: ENV.CARE_COORDINATORS_TABLE }).promise();
 
   if (Items) {
     logInfo("Care coordinators found", {

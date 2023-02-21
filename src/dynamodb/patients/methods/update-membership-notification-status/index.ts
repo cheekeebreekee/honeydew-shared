@@ -5,10 +5,7 @@ import updateMembershipNotificationLevelQuery from "../../queries/update-members
 
 const dynamoDb = new DynamoDB.DocumentClient();
 
-export const updateMembershipNotificationLevel = async (
-  id: string,
-  level: number
-) => {
+export const updateMembershipNotificationLevel = async (id: string, level: number) => {
   logInfo("Updating membership notification level of the patient in DB", {
     id,
     level,

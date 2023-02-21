@@ -6,10 +6,7 @@ import addBirthControlQuery from "../../queries/add-birth-control";
 
 const dynamoDb = new DynamoDB.DocumentClient();
 
-export const addBirthControl = async (
-  id: string,
-  birthControl: BirthControl
-) => {
+export const addBirthControl = async (id: string, birthControl: BirthControl) => {
   logInfo("Adding birth control", birthControl);
 
   const accutane = await DynamoDBService.accutane.get(id);
@@ -22,13 +19,8 @@ export const addBirthControl = async (
 
   logInfo("Adding birth control info to accutane record", accutane);
 
-  const { Attributes } = await dynamoDb
-    .update(addBirthControlQuery(id, birthControl))
-    .promise();
+  const { Attributes } = await dynamoDb.update(addBirthControlQuery(id, birthControl)).promise();
 
-  logInfo(
-    "Birth control was successfully added to accutane record",
-    Attributes
-  );
+  logInfo("Birth control was successfully added to accutane record", Attributes);
   return Attributes as Accutane;
 };

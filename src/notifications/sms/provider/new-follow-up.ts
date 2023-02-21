@@ -1,13 +1,13 @@
-import { NotificationEvent, NOTIFICATION_TYPES } from "src/types";
-import { DETAIL_TYPES } from "src/events/detail-types";
-import { publishEvent } from "src/events";
-import { trimPhoneNumber } from "src/utils";
+import { publishEvent } from "../../../events";
+import { DETAIL_TYPES } from "../../../events/detail-types";
+import { HoneydewNotificationEvent, NOTIFICATION_TYPES } from "../../../types";
+import { trimPhoneNumber } from "../../../utils";
 import { logDebug } from "../../../utils/logger";
 
 export const newFollowUp = async (phone: string) => {
   logDebug("Sending SMS message to provider about new follow-up");
 
-  const payload: NotificationEvent = {
+  const payload: HoneydewNotificationEvent = {
     type: NOTIFICATION_TYPES.SMS,
     targetAddresses: [trimPhoneNumber(phone)],
     template: "new-follow-up",

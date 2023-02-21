@@ -5,14 +5,8 @@ import updateMedBackgroundFillingNotificationStatusQuery from "../../queries/upd
 
 const dynamoDb = new DynamoDB.DocumentClient();
 
-export const updateMedBackgroundFillingNotificationStatus = async (
-  id: string,
-  status: boolean
-) => {
-  logInfo(
-    "Update med background filling notification status of the patient in DB",
-    { id, status }
-  );
+export const updateMedBackgroundFillingNotificationStatus = async (id: string, status: boolean) => {
+  logInfo("Update med background filling notification status of the patient in DB", { id, status });
   const { Attributes } = await dynamoDb
     .update(updateMedBackgroundFillingNotificationStatusQuery(id, status))
     .promise();

@@ -7,9 +7,7 @@ const dynamoDb = new DynamoDB.DocumentClient();
 
 export const get = async (id: string): Promise<AccutaneNotification> => {
   logInfo("Getting accutane notification record from DB", { id });
-  const { Item } = await dynamoDb
-    .get(getAccutaneNotificationsQuery(id))
-    .promise();
+  const { Item } = await dynamoDb.get(getAccutaneNotificationsQuery(id)).promise();
 
   if (!Item) {
     const message = `Accutane notification record with ID ${id} is not found`;

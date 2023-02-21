@@ -21,12 +21,7 @@ export const pauseAccutane = async (id: string, daysAmount: number) => {
 
   const { Attributes } = await dynamoDb
     .update(
-      pauseAccutaneQuery(
-        id,
-        daysAmount,
-        accutane.ttl,
-        accutane.nextConfirmationDate as string
-      )
+      pauseAccutaneQuery(id, daysAmount, accutane.ttl, accutane.nextConfirmationDate as string)
     )
     .promise();
 

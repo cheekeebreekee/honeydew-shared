@@ -3,9 +3,7 @@ import { ENV } from "../../../shared/constants";
 import { Accutane } from "../../../types/Accutane";
 import { logInfo } from "../../../utils/logger";
 
-export default (
-  accutane: Partial<Accutane>
-): DynamoDB.DocumentClient.PutItemInput => {
+export default (accutane: Partial<Accutane>): DynamoDB.DocumentClient.PutItemInput => {
   const query = {
     TableName: ENV.ACCUTANE_TABLE,
     Item: accutane,

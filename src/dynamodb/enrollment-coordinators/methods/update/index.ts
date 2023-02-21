@@ -6,9 +6,7 @@ import updateEnrollmentCoordinatorQuery from "../../queries/update";
 
 const dynamoDb = new DynamoDB.DocumentClient();
 
-export const update = async (
-  enrollmentCoordinatorPartial: Partial<EnrollmentCoordinator>
-) => {
+export const update = async (enrollmentCoordinatorPartial: Partial<EnrollmentCoordinator>) => {
   logInfo("Updating enrollment coordinator", enrollmentCoordinatorPartial);
 
   if (!enrollmentCoordinatorPartial.id) {
@@ -17,10 +15,9 @@ export const update = async (
     throw new Error(message);
   }
 
-  const enrollmentCoordinator =
-    await DynamoDBService.enrollmentCoordinators.get(
-      enrollmentCoordinatorPartial.id
-    );
+  const enrollmentCoordinator = await DynamoDBService.enrollmentCoordinators.get(
+    enrollmentCoordinatorPartial.id
+  );
 
   logInfo("Enrollment coordinator to update", enrollmentCoordinator);
 

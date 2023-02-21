@@ -5,9 +5,7 @@ import getByPatientIdQuery from "../../queries/get-by-patient-id";
 
 const dynamoDb = new DynamoDB.DocumentClient();
 
-export const getByPatientId = async (
-  id: string
-): Promise<AccutaneNotification | null> => {
+export const getByPatientId = async (id: string): Promise<AccutaneNotification | null> => {
   logInfo("Getting Accutane notification from DB by patient ID", { id });
   const { Items } = await dynamoDb.scan(getByPatientIdQuery(id)).promise();
 

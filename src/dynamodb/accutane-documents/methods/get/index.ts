@@ -5,14 +5,9 @@ import getAccutaneDocumentQuery from "../../queries/get";
 
 const dynamoDb = new DynamoDB.DocumentClient();
 
-export const get = async (
-  id: string,
-  patientId: string
-): Promise<AccutaneDocument> => {
+export const get = async (id: string, patientId: string): Promise<AccutaneDocument> => {
   logInfo("Getting accutane document record from DB", { id, patientId });
-  const { Item } = await dynamoDb
-    .get(getAccutaneDocumentQuery(id, patientId))
-    .promise();
+  const { Item } = await dynamoDb.get(getAccutaneDocumentQuery(id, patientId)).promise();
 
   if (!Item) {
     const message = `Accutane document record with ID ${id} is not found`;

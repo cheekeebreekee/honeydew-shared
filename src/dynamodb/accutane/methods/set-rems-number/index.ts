@@ -19,9 +19,7 @@ export const setRemsNumber = async (id: string, remsNumber: string) => {
 
   logInfo("Setting REMS number to accutane record", accutane);
 
-  const { Attributes } = await dynamoDb
-    .update(setRemsNumberQuery(id, remsNumber))
-    .promise();
+  const { Attributes } = await dynamoDb.update(setRemsNumberQuery(id, remsNumber)).promise();
 
   logInfo("REMS number was successfully set to accutane record", Attributes);
   return Attributes as Accutane;

@@ -2,21 +2,16 @@ import { DynamoDB } from "aws-sdk";
 import { ENV } from "../../../shared/constants";
 import { logInfo } from "../../../utils/logger";
 
-export default (
-  id: string,
-  status: boolean
-): DynamoDB.DocumentClient.UpdateItemInput => {
+export default (id: string, status: boolean): DynamoDB.DocumentClient.UpdateItemInput => {
   const query = {
     TableName: ENV.USERS_TABLE,
     Key: {
       id,
     },
-    UpdateExpression:
-      "set #medicalBackground.#notifiedAboutFillingBeforeAppointment=:NOTIFIED",
+    UpdateExpression: "set #medicalBackground.#notifiedAboutFillingBeforeAppointment=:NOTIFIED",
     ExpressionAttributeNames: {
       "#medicalBackground": "medicalBackground",
-      "#notifiedAboutFillingBeforeAppointment":
-        "notifiedAboutFillingBeforeAppointment",
+      "#notifiedAboutFillingBeforeAppointment": "notifiedAboutFillingBeforeAppointment",
     },
     ExpressionAttributeValues: {
       ":NOTIFIED": status,

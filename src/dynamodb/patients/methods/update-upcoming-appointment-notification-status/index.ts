@@ -5,10 +5,7 @@ import updateUpcomingAppointmentNotificationStatusQuery from "../../queries/upda
 
 const dynamoDb = new DynamoDB.DocumentClient();
 
-export const updateUpcomingAppointmentNotificationStatus = async (
-  id: string,
-  status: boolean
-) => {
+export const updateUpcomingAppointmentNotificationStatus = async (id: string, status: boolean) => {
   logInfo("Updating patient's upcoming appointment notification status in DB", {
     id,
     status,

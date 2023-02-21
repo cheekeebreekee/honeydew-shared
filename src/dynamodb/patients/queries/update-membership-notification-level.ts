@@ -2,10 +2,7 @@ import { DynamoDB } from "aws-sdk";
 import { ENV } from "../../../shared/constants";
 import { logInfo } from "../../../utils/logger";
 
-export default (
-  id: string,
-  level: number
-): DynamoDB.DocumentClient.UpdateItemInput => {
+export default (id: string, level: number): DynamoDB.DocumentClient.UpdateItemInput => {
   const query = {
     TableName: ENV.USERS_TABLE,
     Key: {

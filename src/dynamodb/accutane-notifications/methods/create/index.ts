@@ -7,8 +7,6 @@ const dynamoDb = new DynamoDB.DocumentClient();
 
 export const create = async (accutaneNotification: AccutaneNotification) => {
   logInfo("Creating accutane notification in DB", accutaneNotification);
-  await dynamoDb
-    .put(createAccutaneNotification(accutaneNotification))
-    .promise();
+  await dynamoDb.put(createAccutaneNotification(accutaneNotification)).promise();
   logInfo("Created successfully");
 };

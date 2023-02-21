@@ -5,15 +5,7 @@ import { logInfo } from "../../../utils/logger";
 
 export default (
   id: string,
-  {
-    addressLine1,
-    addressLine2,
-    city,
-    firstName,
-    lastName,
-    state,
-    zipCode,
-  }: ShippingInfoPayload
+  { addressLine1, addressLine2, city, firstName, lastName, state, zipCode }: ShippingInfoPayload
 ): DynamoDB.DocumentClient.UpdateItemInput => {
   const query = {
     TableName: ENV.USERS_TABLE,

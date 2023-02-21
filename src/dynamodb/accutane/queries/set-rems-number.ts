@@ -3,10 +3,7 @@ import { BloodWork } from "src/types/Accutane";
 import { ENV } from "../../../shared/constants";
 import { logInfo } from "../../../utils/logger";
 
-export default (
-  id: string,
-  remsNumber: string
-): DynamoDB.DocumentClient.UpdateItemInput => {
+export default (id: string, remsNumber: string): DynamoDB.DocumentClient.UpdateItemInput => {
   const query = {
     TableName: ENV.ACCUTANE_TABLE,
     Key: {
