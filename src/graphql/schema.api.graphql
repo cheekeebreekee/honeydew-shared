@@ -39,8 +39,8 @@ type Mutation {
     updateName(patientId: String, name: String): Patient!
     #updateNoShowStatus --> will be probably generalized to setFlag
     #updateParams --> probably will be generalized to updateMedicalBackgroundInfo
-    updatePaymentInfo(accountId: String, paymentInfo: PaymentInfoInput)
-    updateShippingInfo(patientId: String, shippingInfo: ShippingInfoInput)
+    updatePaymentInfo(accountId: String, paymentInfo: PaymentInfoInput): Patient!
+    updateShippingInfo(patientId: String, shippingInfo: ShippingInfoInput): Patient!
     #updateUpcomingAppointmentNotificationStatus - TODO
     #updateWithSkinSurveyAnswers - TODO
     #upsertWithCalendlyData - TODO
