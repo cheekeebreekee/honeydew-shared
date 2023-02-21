@@ -1,4 +1,4 @@
-import { EventBridge } from "aws-sdk";
+import AWS_EventBridge, { EventBridge } from "@aws-sdk/client-eventbridge";
 import { DETAIL_TYPES } from "./detail-types";
 
 const eventBridge = new EventBridge({
@@ -10,7 +10,7 @@ const eventBridge = new EventBridge({
 });
 
 export const publishEvent = async (data: string, detailType: DETAIL_TYPES) => {
-  const params: EventBridge.PutEventsRequest = {
+  const params: AWS_EventBridge.PutEventsCommandInput = {
     Entries: [
       {
         EventBusName: "123", // TODO: add EventBridge ARN
@@ -21,5 +21,5 @@ export const publishEvent = async (data: string, detailType: DETAIL_TYPES) => {
     ],
   };
 
-  await eventBridge.putEvents(params).promise();
+  await eventBridge.putEvents(params);
 };

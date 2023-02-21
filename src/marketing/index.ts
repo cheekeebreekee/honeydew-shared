@@ -1,4 +1,4 @@
-import { SQS } from "aws-sdk";
+import { SQS } from "@aws-sdk/client-sqs";
 import { ENV } from "../shared";
 import { Patient } from "../types/Patient";
 import { logInfo } from "../utils/logger";
@@ -11,16 +11,14 @@ async function setStatusTag(patient: Patient, statusName: string, isActive: bool
     statusName,
     isActive,
   });
-  await sqs
-    .sendMessage({
-      QueueUrl: ENV.MARKETING_SERVICE_SQS_URL,
-      MessageBody: JSON.stringify({
-        patientId: patient.id,
-        tag: statusName,
-        add: isActive,
-      }),
-    })
-    .promise();
+  await sqs.sendMessage({
+    QueueUrl: ENV.MARKETING_SERVICE_SQS_URL,
+    MessageBody: JSON.stringify({
+      patientId: patient.id,
+      tag: statusName,
+      add: isActive,
+    }),
+  });
 }
 
 export const MarketingService = {

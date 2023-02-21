@@ -1,4 +1,4 @@
-import { SSM } from "aws-sdk";
+import { SSM } from "@aws-sdk/client-ssm";
 
 enum CONFIG_TYPES {
   SECRETS = "secrets",
@@ -14,7 +14,7 @@ class ConfigManager {
   ssm: SSM;
 
   constructor() {
-    this.ssm = new SSM();
+    this.ssm = new SSM({});
     this.store = {
       parameters: {},
       secrets: {},
@@ -22,12 +22,10 @@ class ConfigManager {
   }
 
   private async loadConfig(type: CONFIG_TYPES): Promise<{ [p: string]: string }> {
-    const response = await this.ssm
-      .getParameter({
-        Name: `${process.env.BRAND}/${process.env.ENV}/${process.env.SERVICE}/${type}`,
-        WithDecryption: true,
-      })
-      .promise();
+    const response = await this.ssm.getParameter({
+      Name: `${process.env.BRAND}/${process.env.ENV}/${process.env.SERVICE}/${type}`,
+      WithDecryption: true,
+    });
 
     if (!response.Parameter?.Value) {
       throw new Error(`Configuration with type ${type} is not found`);

@@ -1,6 +1,6 @@
 {
   "name": "honeydew-shared",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "Honeydew common clients",
   "main": "",
   "scripts": {
@@ -26,8 +26,10 @@
   },
   "homepage": "https://github.com/cheekeebreekee/honeydew-shared#readme",
   "dependencies": {
+    "@aws-sdk/client-eventbridge": "^3.272.0",
     "@aws-sdk/client-secrets-manager": "^3.262.0",
-    "aws-sdk": "^2.752.0",
+    "@aws-sdk/client-sqs": "^3.272.0",
+    "@aws-sdk/client-ssm": "^3.272.0",
     "axios": "^0.21.1",
     "form-data": "^4.0.0",
     "moment-timezone": "^0.5.34",
@@ -39,7 +41,6 @@
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.92",
-    "@types/aws-sdk": "^2.7.0",
     "@types/mailchimp__mailchimp_marketing": "^3.0.3",
     "@types/md5": "^2.3.1",
     "@types/node": "^17.0.45",

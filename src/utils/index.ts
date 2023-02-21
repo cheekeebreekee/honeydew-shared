@@ -5,7 +5,6 @@ export * from "./enhanced-handler";
 export * from "./generate-chat-info-payload";
 export * from "./get-date-pretty";
 export * from "./get-patient-initials";
-export * from "./get-provider-by-email";
 export * from "./http-response";
 export * from "./is-appointment-cancelled";
 export * from "./logger";
