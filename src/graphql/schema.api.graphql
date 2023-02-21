@@ -1,0 +1,286 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+    getMyProfile: MyProfile 
+    getMyAppointments: AppointmentPage
+    getPatient(patientId: String): Patient! # probably we will need separate method for getting full patient info (appointments, followups etc.)
+    getPatients: PatientPage
+}
+
+type Mutation {
+    createAppointment(newAppointment: AppointmentInput!): Appointment!
+    addAppointmentStatus(appointmentStatus: AppointmentStatusInput!): Appointment!
+    createNote(newNote: NoteInput!): Note!
+    archivePatient(patientId: String!): Patient!
+    deletePatient(patientId: String!): EmptyPatient
+    createPatient(patient: Patient): Patient!
+    #changeContactedFlag --> will be probably generalized to setFlag
+    #markAsFirstLogin --> will be probably generalized to setFlag
+    #markAsNotifiedAboutFillMedBackground --> will be probably generalized to setFlag
+    #markAsNotifiedAboutUpcomingFollowUp --> will be probably generalized to setFlag
+    #markAsPinned --> will be probably generalized to setFlag
+    #markAsRewardedForReferral --> will be probably generalized to setFlag
+    #markLastTreatmentPlanAsRead --> will be probably generalized to setFlag
+    #setCardSavedFlag --> will be probably generalized to setFlag
+    #reassignEmployees --> will be a part of employee-service
+    #has - TODO ???
+    setFlag(patientId: String, flag: String, value: Boolean): Patient!
+    setMeetingLink(patientId: String, meetingLink: String): Patient!
+    setTreatmentPlan(followUpId: String, treatmentPlan: TreatmentPlanInput): TreatmentPlan!
+    #updateChatInitTime --> need to think what to do with it
+    #updateChatTime --> need to think what to do with it
+    updateInsuranceInfo(patientId: String, insuranceInfo: PatientInsuranceInfoInput): Patient!
+    updateMedicalBackgroundInfo(patientId: String, medicalBackgroundInfo: PatientMedicalBackgroundInput): Patient!
+    #updateMembershipNotificationStatus --> need to think what to do with it
+    #updateMultiAccList --> probably will be deprecated and moved to account service
+    updateName(patientId: String, name: String): Patient!
+    #updateNoShowStatus --> will be probably generalized to setFlag
+    #updateParams --> probably will be generalized to updateMedicalBackgroundInfo
+    updatePaymentInfo(accountId: String, paymentInfo: PaymentInfoInput)
+    updateShippingInfo(patientId: String, shippingInfo: ShippingInfoInput)
+    #updateUpcomingAppointmentNotificationStatus - TODO
+    #updateWithSkinSurveyAnswers - TODO
+    #upsertWithCalendlyData - TODO
+}
+
+input NoteInput {
+    id: ID!
+    createdAt: Number!
+    createdBy: {
+        id: String
+        role: String
+    }!
+    text: String!
+    type: String!
+}
+
+input AppointmentInput {
+    patientId: ID!
+    appointmentId: ID!
+    createdAt: String!
+    startTime: String!
+    endTime: String!
+    status: String
+    cancelReason: String
+}
+
+input AppointmentStatusInput {
+    appointmentId: ID!
+    status: String!
+    cancelReason: String
+}
+
+type Appointment {
+    patientId: ID! #HASH
+    appointmentId: ID! #RANGE
+    createdAt: String!
+    startTime: String!
+    endTime: String!
+    status: String
+    cancelReason: String
+}
+
+type AppointmentPage {
+    appointments: [Appointment!]
+    nextToken: String
+}
+
+type SkinImage {
+    id: String!
+    tag: String!
+    label: String!
+    fileName: String!
+}
+
+type FollowUpQuestionarie {
+    id: String!
+    answer: String
+}
+
+type FollowUpHistory {
+    id: String!
+    role: String;
+    action: String;
+    createdAt: String;
+}
+
+type TreatmentPlan {
+    instructions: String;
+    medicineKey: String;
+    refillExpirationDate: String;
+    refillsCount: String;
+    specialInstructions: String;
+}
+
+input TreatmentPlanInput {
+    instructions: String;
+    medicineKey: String;
+    refillExpirationDate: String;
+    refillsCount: String;
+    specialInstructions: String;
+}
+
+type FollowUp {
+    patientId: ID! #HASH
+    followUpId: ID! #RANGE
+    providerId: String!
+    createdAt: Number!
+    updatedAt: Number!
+    skinImages: SkinImage[]
+    followUpQuestionarie: FollowUpQuestionarie[]
+    nextFollowUpDate: Number!
+    message: String!
+    history: FollowUpHistory[]
+    treatmentPlans: TreatmentPlan[]
+}
+
+type FollowUpPage {
+    followUps: [FollowUp!]
+    nextToken: String
+}
+
+type Payment {
+    id: String!
+    currency: String
+    amount: Number
+    createdAt: Number
+}
+
+input PaymentInfoInput {
+    cardSaved: String;
+    payment: Payment
+}
+
+type PaymentInfo {
+    cardSaved: String;
+    payments: [Payment]
+}
+
+type AccountPatient {
+    id: String!
+}
+
+type Account {
+    id: ID!
+    customerId: String!
+    conversationId: String!
+    email: String
+    paymentInfo: PaymentInfo
+    patients: [AccountPatient]
+    chatInfo: String #TODO
+}
+
+type Note {
+    id: ID! #(key - patientId#uuid)
+    createdAt: Number
+    createdBy: {
+        id: String
+        role: String
+    }
+    text: String
+    type: String
+}
+
+type PatientCareTeam {
+    id: String
+    role: String
+}
+
+type PatientParentInfo {
+    email: String
+    phone: String
+    name: String
+}
+
+type PatientMedicalBackgroundSkinSurvey {
+    id: String
+    answer: String
+}
+
+type PatientMedicalBackground {
+    sex: String
+    height: String
+    weight: String
+    dateOfBirth: String
+    zipCode: String
+    skinSurvey: [PatientMedicalBackgroundSkinSurvey]
+}
+
+input PatientMedicalBackgroundInput {
+    sex: String
+    height: String
+    weight: String
+    dateOfBirth: String
+    zipCode: String
+    skinSurvey: [PatientMedicalBackgroundSkinSurvey]
+}
+
+type ShippingInfo {
+    city: String
+    state: String
+    zipCode: String
+    firstName: String
+    lastName: String
+    addressLine1: String
+    addressLine2: String
+}
+
+input ShippingInfoInput {
+    city: String
+    state: String
+    zipCode: String
+    firstName: String
+    lastName: String
+    addressLine1: String
+    addressLine2: String
+}
+
+type PatientMembership {
+    type: String
+    notificationLevel: Number
+    isActive: Boolean
+    createdAt: Number
+}
+
+type PatientInsuranceInfo {
+    insuranceName: String
+    policyHolderName: String
+    groupNumber: String
+    memberId: String
+}
+
+input PatientInsuranceInfoInput {
+    insuranceName: String
+    policyHolderName: String
+    groupNumber: String
+    memberId: String
+}
+
+type Patient {
+    id: ID!
+    accountId: ID!
+    appointmentId: ID!
+    phone: String
+    email: String
+    referralId: String
+    careTeam: [PatientCareTeam]
+    parentInfo: PatientParentInfo
+    medicalBackground: PatientMedicalBackground
+    shippingInfo: ShippingInfo
+    insurance: PatientInsuranceInfo
+    timezone: String
+    membership: PatientMembership
+    scheduleLink: String
+    isAccutane: Boolean # consider to move to flags
+    # flags(contains flags for different purposes)
+}
+
+type PatientPage {
+    patients: [Patient!]
+    nextToken: String
+}
+
+type EmptyPatient {}
