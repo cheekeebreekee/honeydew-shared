@@ -23,7 +23,7 @@ class ConfigManager {
   }
 
   private async loadConfig(type: CONFIG_TYPES): Promise<{ [p: string]: string }> {
-    const Name = `${process.env.BRAND}/${process.env.ENVIRONMENT}/${process.env.SERVICE}/${type}`;
+    const Name = `/${process.env.BRAND}/${process.env.ENVIRONMENT}/${process.env.SERVICE}/${type}`;
     logDebug("Loading SSM config", {
       Name,
     });
