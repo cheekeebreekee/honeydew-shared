@@ -7,14 +7,16 @@ const isGreaterVersion = (firstVersion, secondVersion) => {
   // first checking major
   if (Number(firstMajor) > Number(secondMajor)) {
     return true;
-  } else if (Number(firstMajor) < Number(secondMajor)) {
+  }
+  if (Number(firstMajor) < Number(secondMajor)) {
     return false;
   }
 
   // if equal, then checking minor
   if (Number(firstMinor) > Number(secondMinor)) {
     return true;
-  } else if (Number(firstMinor) < Number(secondMinor)) {
+  }
+  if (Number(firstMinor) < Number(secondMinor)) {
     return false;
   }
 
@@ -30,7 +32,6 @@ const handler = () => {
   if (isGreaterVersion(currentPackageVersion, currentVersion)) {
     // returning package version as new if it is greater
     console.log(currentPackageVersion);
-    return;
   } else {
     // if package deployed version is greater, then increment it and use as new
     const [major, minor, patch] = currentVersion.split(".");
