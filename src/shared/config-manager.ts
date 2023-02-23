@@ -55,11 +55,11 @@ class ConfigManager {
   }
 
   getSecretValue(key: string) {
-    this.getValue(CONFIG_TYPES.SECRETS, key);
+    return this.getValue(CONFIG_TYPES.SECRETS, key);
   }
 
   getParameterValue(key: string) {
-    this.getValue(CONFIG_TYPES.PARAMETERS, key);
+    return this.getValue(CONFIG_TYPES.PARAMETERS, key);
   }
 }
 
