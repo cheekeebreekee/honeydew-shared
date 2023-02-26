@@ -4,12 +4,10 @@ import { create } from "./methods/create";
 import { update } from "./methods/update";
 import { remove } from "./methods/delete";
 
-export const employees = (tableName: string) => {
-    return {
-        get: get(tableName),
-        getAll: getAll(tableName),
-        create: create(tableName),
-        update: update(tableName),
-        delete: remove(tableName),
-    }
-}
+export const employees = (tableName: string) => ({
+  get: get(tableName),
+  getAll: getAll(tableName),
+  create: create(tableName),
+  update: update(tableName),
+  delete: remove(tableName),
+});

@@ -4,12 +4,14 @@ import { logDebug } from "../utils";
 enum CONFIG_TYPES {
   SECRETS = "secrets",
   PARAMETERS = "parameters",
+  SHARED = "shared",
 }
 
 class ConfigManager {
   store: {
     parameters: { [p: string]: string };
     secrets: { [p: string]: string };
+    shared: { [p: string]: string };
   };
 
   ssm: SSM;
@@ -19,11 +21,11 @@ class ConfigManager {
     this.store = {
       parameters: {},
       secrets: {},
+      shared: {},
     };
   }
 
-  private async loadConfig(type: CONFIG_TYPES): Promise<{ [p: string]: string }> {
-    const Name = `/${process.env.BRAND}/${process.env.ENVIRONMENT}/${process.env.SERVICE}/${type}`;
+  private async loadConfig(Name: string): Promise<{ [p: string]: string }> {
     logDebug("Loading SSM config", {
       Name,
     });
@@ -33,7 +35,7 @@ class ConfigManager {
     });
 
     if (!response.Parameter?.Value) {
-      throw new Error(`Configuration with type ${type} is not found`);
+      throw new Error(`Configuration with name ${Name} is not found`);
     }
 
     return JSON.parse(response.Parameter.Value);
@@ -41,8 +43,15 @@ class ConfigManager {
 
   async initConfig() {
     this.store = {
-      parameters: await this.loadConfig(CONFIG_TYPES.PARAMETERS),
-      secrets: await this.loadConfig(CONFIG_TYPES.SECRETS),
+      parameters: await this.loadConfig(
+        `/${process.env.BRAND}/${process.env.ENVIRONMENT}/${process.env.SERVICE}/${CONFIG_TYPES.PARAMETERS}`
+      ),
+      secrets: await this.loadConfig(
+        `/${process.env.BRAND}/${process.env.ENVIRONMENT}/${process.env.SERVICE}/${CONFIG_TYPES.SECRETS}`
+      ),
+      shared: await this.loadConfig(
+        `/${process.env.BRAND}/${process.env.ENVIRONMENT}/${CONFIG_TYPES.SHARED}`
+      ),
     };
   }
 
@@ -60,6 +69,10 @@ class ConfigManager {
 
   getParameterValue(key: string) {
     return this.getValue(CONFIG_TYPES.PARAMETERS, key);
+  }
+
+  getSharedValue(key: string) {
+    return this.getValue(CONFIG_TYPES.SHARED, key);
   }
 }
 

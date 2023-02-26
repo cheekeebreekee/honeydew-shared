@@ -167,7 +167,7 @@ input PatientParentInfoInput {
 }
 
 type MyProfile {
-    name: String
+  name: String
 }
 
 type NoteCreatedBy {
@@ -237,7 +237,6 @@ type Payment {
   amount: Float
   createdAt: AWSDateTime
 }
-
 
 type PaymentInfo {
   cardSaved: String
