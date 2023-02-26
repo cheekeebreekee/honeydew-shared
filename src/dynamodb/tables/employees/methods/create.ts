@@ -1,10 +1,10 @@
 import { DynamoDB } from "aws-sdk";
-import { Provider, CareCoordinator, EnrollmentCoordinator } from "../../../../types/Employee";
+import { Provider, CareCoordinator, EnrollmentCoordinator, Administrator } from "../../../../types/Employee";
 import { logInfo } from "../../../../utils/logger";
 
 const dynamoDb = new DynamoDB.DocumentClient();
 
-export const create = (tableName: string) => async (employee: Provider | CareCoordinator | EnrollmentCoordinator) => {
+export const create = (tableName: string) => async (employee: Provider | CareCoordinator | EnrollmentCoordinator | Administrator) => {
   logInfo(`Create ${employee.type} employee in DB`, employee);
 
   const query = {

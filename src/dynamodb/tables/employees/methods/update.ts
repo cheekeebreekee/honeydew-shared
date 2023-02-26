@@ -1,11 +1,11 @@
 import { DynamoDB } from "aws-sdk";
 import { DynamoDBService } from "../../../";
-import { Provider, CareCoordinator, EnrollmentCoordinator } from "../../../../types/Employee";
+import { Provider, CareCoordinator, EnrollmentCoordinator, Administrator } from "../../../../types/Employee";
 import { logError, logInfo } from "../../../../utils/logger";
 
 const dynamoDb = new DynamoDB.DocumentClient();
 
-export const update = (tableName: string) => async (employeePartial: Partial<Provider | CareCoordinator | EnrollmentCoordinator>) => {
+export const update = (tableName: string) => async (employeePartial: Partial<Provider | CareCoordinator | EnrollmentCoordinator | Administrator>) => {
   logInfo("Updating employee in DB", employeePartial);
 
   if (!employeePartial.id) {

@@ -28,3 +28,10 @@ export interface CareCoordinator extends Employee {
 export interface EnrollmentCoordinator extends Employee {	
     detachedFromNewPatients?: boolean
 }
+
+export interface Administrator extends Employee {
+    cognitoUserId: string;
+    group: string;
+    groupFriendly: string;
+    fullName?: string;
+  }

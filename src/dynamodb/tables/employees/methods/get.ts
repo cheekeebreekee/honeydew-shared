@@ -1,10 +1,10 @@
 import { DynamoDB } from "aws-sdk";
-import { CareCoordinator, Provider, EnrollmentCoordinator } from "../../../../types/Employee";
+import { CareCoordinator, Provider, EnrollmentCoordinator, Administrator } from "../../../../types/Employee";
 import { logError, logInfo } from "../../../../utils/logger";
 
 const dynamoDb = new DynamoDB.DocumentClient();
 
-export const get = (tableName: string) => async (id: string): Promise<Provider | CareCoordinator | EnrollmentCoordinator> => {
+export const get = (tableName: string) => async (id: string): Promise<Provider | CareCoordinator | EnrollmentCoordinator | Administrator> => {
   logInfo("Getting employee from DB", { id });
 
   const query = {

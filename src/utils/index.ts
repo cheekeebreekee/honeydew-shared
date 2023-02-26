@@ -11,3 +11,5 @@ export * from "./logger";
 export * from "./string-to-bool";
 export * from "./trim-phone-number";
 export * from "./unify-phone-number";
+export * from "./get-resource-arn";
+export * from "./get-resource-name";
