@@ -3,3 +3,4 @@ export * from "./notifications";
 export * from "./shared";
 export * from "./types";
 export * from "./utils";
+export * from "./dynamodb";
