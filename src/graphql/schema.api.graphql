@@ -4,10 +4,10 @@ schema {
 }
 
 type Query {
-  getMyProfile: MyProfile
-  getMyAppointments: AppointmentPage
+  getMyProfile: MyProfile!
+  getMyAppointments(limit: Int, nextToken: String): AppointmentPage!
   getPatient(patientId: String): Patient! # probably we will need separate method for getting full patient info (appointments, followups etc.)
-  getPatients: PatientPage
+  getPatients(limit: Int!, nextToken: String): PatientPage!
 }
 
 type Mutation {
@@ -16,7 +16,7 @@ type Mutation {
   createNote(newNote: NoteInput!): Note!
   archivePatient(patientId: String!): Patient!
   deletePatient(patientId: String!): Patient!
-  createPatient(patient: Patient): Patient!
+  createPatient(patient: PatientInput): Patient!
   #changeContactedFlag --> will be probably generalized to setFlag
   #markAsFirstLogin --> will be probably generalized to setFlag
   #markAsNotifiedAboutFillMedBackground --> will be probably generalized to setFlag
@@ -49,17 +49,32 @@ type Mutation {
   #upsertWithCalendlyData - TODO
 }
 
-type NoteCreatedBy {
+input NoteCreatedByInput {
   id: String!
   role: String!
 }
 
 input NoteInput {
   id: ID!
-  createdAt: Number!
-  createdBy: NoteCreatedBy!
+  createdAt: AWSDateTime!
+  createdBy: NoteCreatedByInput!
   text: String!
   type: String!
+}
+
+input TreatmentPlanInput {
+  instructions: String
+  medicineKey: String
+  refillExpirationDate: String
+  refillsCount: String
+  specialInstructions: String
+}
+
+input PaymentInput {
+  id: String!
+  currency: String
+  amount: Float
+  createdAt: AWSDateTime
 }
 
 input AppointmentInput {
@@ -72,25 +87,102 @@ input AppointmentInput {
   cancelReason: String
 }
 
+input PaymentInfoInput {
+  cardSaved: String
+  payment: PaymentInput
+}
+
 input AppointmentStatusInput {
   appointmentId: ID!
   status: String!
   cancelReason: String
 }
 
+input PatientMedicalBackgroundInput {
+  sex: String
+  height: String
+  weight: String
+  dateOfBirth: String
+  zipCode: String
+  skinSurvey: [PatientMedicalBackgroundSkinSurveyInput]
+}
+
+input PatientMedicalBackgroundSkinSurveyInput {
+  id: String
+  answer: String
+}
+
+input ShippingInfoInput {
+  city: String
+  state: String
+  zipCode: String
+  firstName: String
+  lastName: String
+  addressLine1: String
+  addressLine2: String
+}
+
+input PatientInsuranceInfoInput {
+  insuranceName: String
+  policyHolderName: String
+  groupNumber: String
+  memberId: String
+}
+
+input PatientInput {
+  id: ID!
+  accountId: ID!
+  appointmentId: ID!
+  phone: String
+  email: String
+  referralId: String
+  careTeam: [PatientCareTeamInput]
+  parentInfo: PatientParentInfoInput
+  medicalBackground: PatientMedicalBackgroundInput
+  shippingInfo: ShippingInfoInput
+  insurance: PatientInsuranceInfoInput
+  timezone: String
+  membership: PatientMembershipInput
+  scheduleLink: String
+  isAccutane: Boolean! # consider to move to flags
+  # flags(contains flags for different purposes)
+}
+
+input PatientCareTeamInput {
+  id: String
+  role: String
+}
+
+input PatientMembershipInput {
+  type: String
+  notificationLevel: Int
+  isActive: Boolean!
+  createdAt: AWSDateTime
+}
+
+input PatientParentInfoInput {
+  email: String
+  phone: String
+  name: String
+}
+
+type MyProfile {
+    name: String
+}
+
+type NoteCreatedBy {
+  id: String!
+  role: String!
+}
+
 type Appointment {
   patientId: ID! #HASH
   appointmentId: ID! #RANGE
-  createdAt: String!
-  startTime: String!
-  endTime: String!
+  createdAt: AWSDateTime!
+  startTime: AWSDateTime!
+  endTime: AWSDateTime!
   status: String
   cancelReason: String
-}
-
-type AppointmentPage {
-  appointments: [Appointment!]
-  nextToken: String
 }
 
 type SkinImage {
@@ -120,23 +212,15 @@ type TreatmentPlan {
   specialInstructions: String
 }
 
-input TreatmentPlanInput {
-  instructions: String
-  medicineKey: String
-  refillExpirationDate: String
-  refillsCount: String
-  specialInstructions: String
-}
-
 type FollowUp {
   patientId: ID! #HASH
   followUpId: ID! #RANGE
   providerId: String!
-  createdAt: Number!
-  updatedAt: Number!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
   skinImages: [SkinImage]
   followUpQuestionarie: [FollowUpQuestionarie]
-  nextFollowUpDate: Number!
+  nextFollowUpDate: AWSDateTime!
   message: String!
   history: [FollowUpHistory]
   treatmentPlans: [TreatmentPlan]
@@ -150,14 +234,10 @@ type FollowUpPage {
 type Payment {
   id: String!
   currency: String
-  amount: Number
-  createdAt: Number
+  amount: Float
+  createdAt: AWSDateTime
 }
 
-input PaymentInfoInput {
-  cardSaved: String
-  payment: Payment
-}
 
 type PaymentInfo {
   cardSaved: String
@@ -180,7 +260,7 @@ type Account {
 
 type Note {
   id: ID! #(key - patientId#uuid)
-  createdAt: Number
+  createdAt: AWSDateTime!
   createdBy: NoteCreatedBy!
   text: String
   type: String
@@ -211,26 +291,7 @@ type PatientMedicalBackground {
   skinSurvey: [PatientMedicalBackgroundSkinSurvey]
 }
 
-input PatientMedicalBackgroundInput {
-  sex: String
-  height: String
-  weight: String
-  dateOfBirth: String
-  zipCode: String
-  skinSurvey: [PatientMedicalBackgroundSkinSurvey]
-}
-
 type ShippingInfo {
-  city: String
-  state: String
-  zipCode: String
-  firstName: String
-  lastName: String
-  addressLine1: String
-  addressLine2: String
-}
-
-input ShippingInfoInput {
   city: String
   state: String
   zipCode: String
@@ -242,19 +303,12 @@ input ShippingInfoInput {
 
 type PatientMembership {
   type: String
-  notificationLevel: Number
-  isActive: Boolean
-  createdAt: Number
+  notificationLevel: Int
+  isActive: Boolean!
+  createdAt: AWSDateTime
 }
 
 type PatientInsuranceInfo {
-  insuranceName: String
-  policyHolderName: String
-  groupNumber: String
-  memberId: String
-}
-
-input PatientInsuranceInfoInput {
   insuranceName: String
   policyHolderName: String
   groupNumber: String
@@ -276,11 +330,16 @@ type Patient {
   timezone: String
   membership: PatientMembership
   scheduleLink: String
-  isAccutane: Boolean # consider to move to flags
+  isAccutane: Boolean! # consider to move to flags
   # flags(contains flags for different purposes)
 }
 
 type PatientPage {
   patients: [Patient!]
+  nextToken: String
+}
+
+type AppointmentPage {
+  appointments: [Appointment!]
   nextToken: String
 }
