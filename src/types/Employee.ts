@@ -2,6 +2,7 @@ export enum EmployeeType {
   "provider",
   "care-coordinator",
   "enrollment-coordinator",
+  "admin"
 }
 
 export interface Employee {
@@ -30,8 +31,7 @@ export interface EnrollmentCoordinator extends Employee {
 }
 
 export interface Administrator extends Employee {
-  cognitoUserId: string;
-  group: string;
-  groupFriendly: string;
+  group?: string;
+  groupFriendly?: string;
   fullName?: string;
 }
