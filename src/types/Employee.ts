@@ -2,7 +2,7 @@ export enum EmployeeType {
   "provider",
   "care-coordinator",
   "enrollment-coordinator",
-  "admin"
+  "admin",
 }
 
 export interface Employee {

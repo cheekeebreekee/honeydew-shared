@@ -1,14 +1,15 @@
 import { DynamoDB } from "@aws-sdk/client-dynamodb";
 import { marshall } from "@aws-sdk/util-dynamodb";
-import { logInfo } from "../../../../utils/logger";
+import { logInfo } from "../../../utils/logger";
+import { config } from "../../../shared";
 
 const dynamoDb = new DynamoDB({});
 
-export const remove = (tableName: string) => async (id: string) => {
+export const remove = async (id: string) => {
   logInfo("Delete employee from DB", { id });
 
   const query = {
-    TableName: tableName,
+    TableName: config.getSharedValue("employeesTableName"),
     Key: marshall({
       id,
     }),
