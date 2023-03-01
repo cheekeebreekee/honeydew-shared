@@ -1,6 +1,4 @@
 import { trimPhoneNumber } from "../../../utils/trim-phone-number";
-import { Patient } from "../../../types/Patient";
-import { Provider } from "../../../types/Provider";
 import { getDatePretty } from "../../../utils/get-date-pretty";
 import { logDebug } from "../../../utils/logger";
 import { publishEvent } from "../../../events";

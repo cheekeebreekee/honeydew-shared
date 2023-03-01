@@ -1,7 +1,7 @@
 import { publishEvent } from "../../../events";
 import { DETAIL_TYPES } from "../../../events/detail-types";
 import { SUBSCRIPTIONS_PRETTY } from "../../../shared";
-import { HoneydewNotificationEvent, NOTIFICATION_TYPES, Patient } from "../../../types";
+import { HoneydewNotificationEvent, NOTIFICATION_TYPES } from "../../../types";
 import { logDebug } from "../../../utils";
 
 interface Props {

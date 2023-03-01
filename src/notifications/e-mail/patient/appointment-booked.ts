@@ -1,6 +1,6 @@
 import { publishEvent } from "../../../events";
 import { DETAIL_TYPES } from "../../../events/detail-types";
-import { HoneydewNotificationEvent, NOTIFICATION_TYPES, Patient, Provider } from "../../../types";
+import { HoneydewNotificationEvent, NOTIFICATION_TYPES } from "../../../types";
 import { logDebug } from "../../../utils";
 
 interface Props {
