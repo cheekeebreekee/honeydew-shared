@@ -4,4 +4,8 @@ export interface Account {
   conversationId: string;
   email: string;
   patients: string[];
+  parentsInfo: {
+    email: string;
+    phone: string;
+  };
 }

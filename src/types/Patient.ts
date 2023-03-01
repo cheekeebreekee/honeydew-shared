@@ -26,31 +26,31 @@ export interface SkinImages {
   followUpData?: { [p: string]: string };
 }
 
-export interface MedicalBackground {
-  skinImages: SkinImages[] | null;
-  birthControlMeds: string[] | null;
-  pregnancy: boolean | null;
-  isRegularMenstruationCycle: boolean | null;
-  isPcos: boolean | null;
-  skinSensitivity: string | null;
-  currentPrescriptions: string[] | null;
-  currentNonPrescriptions: string | null;
-  skinDryness: string | null;
-  prescriptionPills: string[];
-  prescriptionCreams: string[];
-  isAnyMedicalConditionPillsInUse: boolean | null;
-  isAnyPrescriptionAllergies: boolean | null;
-  medications: string | null;
-  isAnyPrescriptionsInUse: boolean | null;
-  previousAcneProductsTaken: string[] | null;
-  isBirthControlTaken: boolean | null;
-  menstruationBreakout: string | null;
-  stressLevel: string | null;
-  sleepAmount: string | null;
-  dairyConsumption: string | null;
-  notifiedAboutFillingBeforeAppointment?: boolean;
-  prescriptionAllergies: string | null;
-}
+// export interface MedicalBackground {
+//   skinImages: SkinImages[] | null;
+//   birthControlMeds: string[] | null;
+//   pregnancy: boolean | null;
+//   isRegularMenstruationCycle: boolean | null;
+//   isPcos: boolean | null;
+//   skinSensitivity: string | null;
+//   currentPrescriptions: string[] | null;
+//   currentNonPrescriptions: string | null;
+//   skinDryness: string | null;
+//   prescriptionPills: string[];
+//   prescriptionCreams: string[];
+//   isAnyMedicalConditionPillsInUse: boolean | null;
+//   isAnyPrescriptionAllergies: boolean | null;
+//   medications: string | null;
+//   isAnyPrescriptionsInUse: boolean | null;
+//   previousAcneProductsTaken: string[] | null;
+//   isBirthControlTaken: boolean | null;
+//   menstruationBreakout: string | null;
+//   stressLevel: string | null;
+//   sleepAmount: string | null;
+//   dairyConsumption: string | null;
+//   notifiedAboutFillingBeforeAppointment?: boolean;
+//   prescriptionAllergies: string | null;
+// }
 
 export interface BasicInfo {
   zipCode: string;
@@ -144,33 +144,66 @@ export interface ChatInfo extends ChatIdentity {
   conversationId: string;
 }
 
+// export interface Patient {
+//   id: string;
+//   archived?: boolean;
+//   medicalBackground: MedicalBackground;
+//   basicInfo: BasicInfo;
+//   created_at: string;
+//   phone: string;
+//   notificationPhone: string;
+//   provider_id: string;
+//   care_coordinator_id: string;
+//   first_log_in: boolean;
+//   full_name: string;
+//   email: string;
+//   membership: Membership;
+//   multiAccList?: string[];
+//   paymentInfo: PaymentInfo;
+//   timezone: string;
+//   calendly_invitee_id: string;
+//   notes?: PatientNote[];
+//   appointments: Appointment[];
+//   appointmentStatus: AppointmentStatus[];
+//   notifiedAboutUpcomingAppointment: boolean;
+//   shippingInfo?: ShippingInfo;
+//   isAppointmentSkipped?: boolean;
+//   chatInfo?: ChatInfo;
+//   referralId: number;
+//   isAccutane?: boolean;
+// }
+
+export interface InsuranceInfo {
+  insuranceName?: string;
+  policyHolderName?: string;
+  groupNumber?: string;
+  memberId?: string;
+}
+
+export interface SkinSurveyAnswer {
+  id: string;
+  answer: string | string[] | boolean;
+}
+
+export interface MedicalBackground {
+  sex?: string;
+  weight?: number;
+  height?: number;
+  dateOfBirth: string;
+  zipCode: string;
+  skinSurvey: SkinSurveyAnswer[];
+}
+
 export interface Patient {
   id: string;
-  archived?: boolean;
+  accountId: string;
+  appointmentId?: string;
+  phone?: string;
+  referralId?: string;
+  careTeam: string[];
   medicalBackground: MedicalBackground;
-  basicInfo: BasicInfo;
-  created_at: string;
-  phone: string;
-  notificationPhone: string;
-  provider_id: string;
-  care_coordinator_id: string;
-  first_log_in: boolean;
-  full_name: string;
-  email: string;
-  membership: Membership;
-  multiAccList?: string[];
-  paymentInfo: PaymentInfo;
+  insurance?: InsuranceInfo;
   timezone: string;
-  calendly_invitee_id: string;
-  notes?: PatientNote[];
-  appointments: Appointment[];
-  appointmentStatus: AppointmentStatus[];
-  notifiedAboutUpcomingAppointment: boolean;
-  shippingInfo?: ShippingInfo;
-  isAppointmentSkipped?: boolean;
-  chatInfo?: ChatInfo;
-  referralId: number;
-  isAccutane?: boolean;
 }
 
 export interface PatientEmailCheckInfo {
