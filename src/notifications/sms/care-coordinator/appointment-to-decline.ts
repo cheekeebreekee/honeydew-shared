@@ -1,10 +1,22 @@
 import { HoneydewNotificationEvent, NOTIFICATION_TYPES } from "../../../types";
-import { CareCoordinator } from "../../../types/CareCoordinator";
-import { Patient } from "../../../types/Patient";
-import { getPatientInitials, getDatePretty } from "../../../utils";
+import { getDatePretty, getInitials } from "../../../utils";
 import { logDebug } from "../../../utils/logger";
 
-export const appointmentToDecline = async (careCoordinator: CareCoordinator, patient: Patient) => {
+interface Props {
+  patient: {
+    dateOfbirth: string;
+    appointmentDate: string;
+    fullName: string;
+    phone: string;
+  };
+  careCoordinator: {
+    firstName: string;
+    lastName: string;
+    phone: string;
+  };
+}
+
+export const appointmentToDecline = async ({ patient, careCoordinator }: Props) => {
   const { firstName, lastName, phone } = careCoordinator;
   logDebug("Sending SMS message to care coordinator about appointment to decline", {
     careCoordinator,
@@ -16,9 +28,9 @@ export const appointmentToDecline = async (careCoordinator: CareCoordinator, pat
     data: {
       fullName: `${firstName} ${lastName}`,
       patient: {
-        initials: getPatientInitials(patient),
-        dateOfBirth: patient.basicInfo.birthdate,
-        appointmentDate: getDatePretty(patient.appointments[0].start_time),
+        initials: getInitials(patient.fullName),
+        dateOfBirth: patient.dateOfbirth,
+        appointmentDate: getDatePretty(patient.appointmentDate),
         phone: patient.phone,
       },
     },

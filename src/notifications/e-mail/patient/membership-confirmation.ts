@@ -4,22 +4,34 @@ import { SUBSCRIPTIONS_PRETTY } from "../../../shared";
 import { HoneydewNotificationEvent, NOTIFICATION_TYPES, Patient } from "../../../types";
 import { logDebug } from "../../../utils";
 
-export const membershipConfirmation = async (
-  patient: Patient,
-  subscriptionType: string,
-  amount: number,
-  discount: number,
-  isMultiaccount?: boolean
-) => {
+interface Props {
+  patient: {
+    email: string;
+    parentsEmail?: string;
+  };
+  subscriptionType: string;
+  amount: number;
+  discount: number;
+  isMultiaccount?: boolean;
+}
+
+export const membershipConfirmation = async ({
+  patient,
+  subscriptionType,
+  amount,
+  discount,
+  isMultiaccount,
+}: Props) => {
   logDebug("Sending email to patient about membership confirmation", {
     patient,
     subscriptionType,
     amount,
     discount,
+    isMultiaccount,
   });
 
   const emails = [patient.email];
-  if (patient.basicInfo.parentsEmail) emails.push(patient.basicInfo.parentsEmail);
+  if (patient.parentsEmail) emails.push(patient.parentsEmail);
 
   const payload: HoneydewNotificationEvent = {
     type: NOTIFICATION_TYPES.EMAIL,

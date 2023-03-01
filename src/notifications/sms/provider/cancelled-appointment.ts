@@ -2,13 +2,27 @@ import { trimPhoneNumber } from "../../../utils/trim-phone-number";
 import { Patient } from "../../../types/Patient";
 import { Provider } from "../../../types/Provider";
 import { getDatePretty } from "../../../utils/get-date-pretty";
-import { getPatientInitials } from "../../../utils/get-patient-initials";
 import { logDebug } from "../../../utils/logger";
 import { publishEvent } from "../../../events";
 import { DETAIL_TYPES } from "../../../events/detail-types";
 import { HoneydewNotificationEvent, NOTIFICATION_TYPES } from "../../../types";
+import { getInitials } from "../../../utils";
 
-export const cancelledAppointment = async (provider: Provider, patient: Patient) => {
+interface Props {
+  provider: {
+    firstName: string;
+    lastName: string;
+    phone: string;
+  };
+  patient: {
+    fullName: string;
+    dateOfBirth: string;
+    appointmentDate: string;
+    phone: string;
+  };
+}
+
+export const cancelledAppointment = async ({ patient, provider }: Props) => {
   logDebug("Sending SMS message to provider about cancelled appointment", {
     provider,
     patient,
@@ -21,9 +35,9 @@ export const cancelledAppointment = async (provider: Provider, patient: Patient)
     data: {
       fullName: `${firstName} ${lastName}`,
       patient: {
-        initials: getPatientInitials(patient),
-        dateOfBirth: patient.basicInfo.birthdate,
-        appointmentDate: getDatePretty(patient.appointments[0].start_time),
+        initials: getInitials(patient.fullName),
+        dateOfBirth: patient.dateOfBirth,
+        appointmentDate: getDatePretty(patient.appointmentDate),
         phone: patient.phone,
       },
     },

@@ -1,18 +1,24 @@
 import { publishEvent } from "../../../events";
 import { DETAIL_TYPES } from "../../../events/detail-types";
-import { CareCoordinator, HoneydewNotificationEvent, NOTIFICATION_TYPES } from "../../../types";
+import { HoneydewNotificationEvent, NOTIFICATION_TYPES } from "../../../types";
 import { logDebug } from "../../../utils";
 
-export const newVisitNotes = async (careCoordinator: CareCoordinator) => {
-  logDebug("Sending email to care coordinator about new visit notes submitted", careCoordinator);
+interface Props {
+  email: string;
+  firstName: string;
+  lastName: string;
+}
+
+export const newVisitNotes = async (props: Props) => {
+  logDebug("Sending email to care coordinator about new visit notes submitted", props);
 
   const payload: HoneydewNotificationEvent = {
     type: NOTIFICATION_TYPES.EMAIL,
-    targetAddresses: [careCoordinator.email],
+    targetAddresses: [props.email],
     template: "new-visit-notes",
     data: {
       emailSubject: "New visit submission!",
-      fullName: `${careCoordinator.firstName} ${careCoordinator.lastName}`,
+      fullName: `${props.firstName} ${props.lastName}`,
     },
   };
 

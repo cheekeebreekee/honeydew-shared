@@ -3,7 +3,21 @@ import { DETAIL_TYPES } from "../../../events/detail-types";
 import { HoneydewNotificationEvent, NOTIFICATION_TYPES, Patient, Provider } from "../../../types";
 import { logDebug } from "../../../utils";
 
-export const appointmentBooked = async (patient: Patient, provider: Provider) => {
+interface Props {
+  patient: {
+    email: string;
+    parentsEmail?: string;
+    fullName: string;
+    phone: string;
+    appointmentDate: string;
+  };
+  provider: {
+    firstName: string;
+    lastName: string;
+  };
+}
+
+export const appointmentBooked = async ({ patient, provider }: Props) => {
   logDebug("Sending email message to patient about booked appointment", {
     patient,
     provider,
@@ -14,7 +28,7 @@ export const appointmentBooked = async (patient: Patient, provider: Provider) =>
     "info@honeydewcare.com", // TODO: move to env config
   ];
 
-  if (patient.basicInfo.parentsEmail) emails.push(patient.basicInfo.parentsEmail);
+  if (patient.parentsEmail) emails.push(patient.parentsEmail);
 
   const payload: HoneydewNotificationEvent = {
     type: NOTIFICATION_TYPES.EMAIL,
@@ -22,10 +36,10 @@ export const appointmentBooked = async (patient: Patient, provider: Provider) =>
     template: "appointment-booked",
     data: {
       patient: {
-        fullName: patient.full_name,
+        fullName: patient.fullName,
         phone: patient.phone,
         email: patient.email,
-        appointmentTime: patient.appointments[0].start_time_pretty,
+        appointmentTime: patient.appointmentDate,
       },
       provider: {
         firstName: provider.firstName,

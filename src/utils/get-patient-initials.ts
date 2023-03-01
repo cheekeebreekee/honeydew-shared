@@ -1,7 +1,5 @@
-import { Patient } from "../types/Patient";
-
-export function getPatientInitials(patient: Patient) {
-  const fullNameWords = patient.full_name.split(" ");
+export function getInitials(fullName: string) {
+  const fullNameWords = fullName.split(" ");
   const firstNameInitial = fullNameWords.shift()?.[0]?.toUpperCase() || "";
   const lastNameInitial = fullNameWords.pop()?.[0]?.toUpperCase() || "";
 

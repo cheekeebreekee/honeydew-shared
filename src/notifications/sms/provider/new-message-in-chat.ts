@@ -1,13 +1,24 @@
 import { trimPhoneNumber } from "../../../utils/trim-phone-number";
-import { Patient } from "../../../types/Patient";
-import { Provider } from "../../../types/Provider";
-import { getPatientInitials } from "../../../utils/get-patient-initials";
 import { logDebug } from "../../../utils/logger";
 import { publishEvent } from "../../../events";
 import { DETAIL_TYPES } from "../../../events/detail-types";
 import { HoneydewNotificationEvent, NOTIFICATION_TYPES } from "../../../types";
+import { getInitials } from "../../../utils";
 
-export const newMessageInChat = async (patient: Patient, provider: Provider) => {
+interface Props {
+  provider: {
+    firstName: string;
+    lastName: string;
+    phone: string;
+  };
+  patient: {
+    fullName: string;
+    dateOfBirth: string;
+    phone: string;
+  };
+}
+
+export const newMessageInChat = async ({ patient, provider }: Props) => {
   logDebug("Sending SMS message to provider about new message in chat", {
     patient,
     provider,
@@ -20,8 +31,8 @@ export const newMessageInChat = async (patient: Patient, provider: Provider) => 
     data: {
       fullName: `${firstName} ${lastName}`,
       patient: {
-        dateOfBirth: patient.basicInfo.birthdate,
-        initials: getPatientInitials(patient),
+        dateOfBirth: patient.dateOfBirth,
+        initials: getInitials(patient.fullName),
       },
     },
   };
