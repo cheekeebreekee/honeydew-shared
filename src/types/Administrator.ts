@@ -6,10 +6,3 @@ export interface Administrator {
   group: string;
   groupFriendly: string;
 }
-export interface Employee {
-  id: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-  phone: string;
-}
