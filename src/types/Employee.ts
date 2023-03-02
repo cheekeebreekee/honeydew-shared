@@ -1,13 +1,13 @@
-export enum EmployeeType {
-  "provider",
-  "care-coordinator",
-  "enrollment-coordinator",
-  "admin",
+export enum EMPLOYEE_TYPES {
+  PROVIDER = "provider",
+  CARE_COORDINATOR = "care-coordinator",
+  ENROLLMENT_COORDINATOR = "enrollment-coordinator",
+  ADMIN = "admin",
 }
 
 export interface Employee {
   id: string;
-  type: EmployeeType;
+  type: EMPLOYEE_TYPES;
   firstName: string;
   lastName: string;
   email: string;
