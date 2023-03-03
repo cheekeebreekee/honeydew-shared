@@ -13,7 +13,6 @@ export const publishEvent = async (data: string, detailType: DETAIL_TYPES) => {
   const params: AWS_EventBridge.PutEventsCommandInput = {
     Entries: [
       {
-        EventBusName: "123", // TODO: add EventBridge ARN
         Source: process.env.AWS_LAMBDA_FUNCTION_NAME,
         Detail: data,
         DetailType: detailType,
