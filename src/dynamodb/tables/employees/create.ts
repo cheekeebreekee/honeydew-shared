@@ -14,7 +14,7 @@ const dynamoDb = new DynamoDB({});
 export const create = async (
   employee: Provider | CareCoordinator | EnrollmentCoordinator | Administrator
 ) => {
-  logInfo(`Create ${employee.type} employee in DB`, employee);
+  logInfo(`Create ${employee.role} employee in DB`, employee);
 
   const query = {
     TableName: config.getSharedValue("employeesTableName"),
