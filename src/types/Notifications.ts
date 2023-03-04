@@ -11,4 +11,5 @@ export interface HoneydewNotificationEvent {
   template: string;
   data: NotificationPayload;
   targetAddresses: string[];
+  patientId?: string; // needed to save a record about interactive SMS
 }
