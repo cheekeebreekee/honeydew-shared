@@ -81,7 +81,7 @@ export interface PatientNote {
   fullName: string;
 }
 
-export interface Appointment {
+export interface CalendlyAppointment {
   cancelled_at: null;
   invitee_start_time: string;
   invitee_start_time_pretty: string;
@@ -113,7 +113,7 @@ export interface Appointment {
   }[];
 }
 
-export interface AppointmentStatus {
+export interface CalendlyAppointmentStatus {
   status: string;
   timestamp: number;
   reason?: string;

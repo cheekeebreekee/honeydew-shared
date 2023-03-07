@@ -12,7 +12,7 @@ import { logError, logInfo } from "../../../utils/logger";
 const dynamoDb = new DynamoDB({});
 
 export const update = async (
-  employeePartial: Partial<Provider | CareCoordinator | EnrollmentCoordinator | Administrator>
+  employeePartial: Partial<Appointment>
 ) => {
   logInfo("Updating employee in DB", employeePartial);
 
