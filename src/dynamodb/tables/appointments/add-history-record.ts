@@ -1,18 +1,12 @@
 import { DynamoDB, UpdateItemCommandInput } from "@aws-sdk/client-dynamodb";
 import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
 import { config, DynamoDBService } from "../../..";
-import {
-  Appointment,
-  AppointmentHistory
-} from "../../../types/Appointment";
+import { Appointment, AppointmentHistory } from "../../../types/Appointment";
 import { logError, logInfo } from "../../../utils/logger";
 
 const dynamoDb = new DynamoDB({});
 
-export const addHistoryRecord = async (
-  patientId: string,
-  historyRecord: AppointmentHistory
-) => {
+export const addHistoryRecord = async (patientId: string, historyRecord: AppointmentHistory) => {
   logInfo("Updating appointment history in DB", { patientId, historyRecord });
 
   if (!patientId) {
@@ -25,10 +19,7 @@ export const addHistoryRecord = async (
 
   logInfo("Appointment to update", appointment);
 
-  const updatedHistory: AppointmentHistory[] = [
-    ...appointment.history,
-    historyRecord,
-  ];
+  const updatedHistory: AppointmentHistory[] = [...appointment.history, historyRecord];
 
   logInfo("Updated history data", updatedHistory);
 
@@ -37,8 +28,7 @@ export const addHistoryRecord = async (
     Key: marshall({
       id: patientId,
     }),
-    UpdateExpression:
-      "set #history=:HISTORY",
+    UpdateExpression: "set #history=:HISTORY",
     ExpressionAttributeNames: {
       "#history": "history",
     },

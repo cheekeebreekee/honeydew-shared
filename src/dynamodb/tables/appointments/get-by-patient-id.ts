@@ -6,9 +6,7 @@ import { Appointment } from "../../../types";
 
 const dynamoDb = new DynamoDB({});
 
-export const getByPatientId = async (
-  patientId: string
-): Promise<Appointment> => {
+export const getByPatientId = async (patientId: string): Promise<Appointment> => {
   logInfo("Getting appointment from DB by patient ID", { patientId });
 
   const query = {

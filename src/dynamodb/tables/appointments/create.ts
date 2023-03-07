@@ -1,16 +1,12 @@
 import { DynamoDB } from "@aws-sdk/client-dynamodb";
 import { marshall } from "@aws-sdk/util-dynamodb";
 import { config } from "../../../shared";
-import {
-  Appointment
-} from "../../../types/Appointment";
+import { Appointment } from "../../../types/Appointment";
 import { logInfo } from "../../../utils/logger";
 
 const dynamoDb = new DynamoDB({});
 
-export const create = async (
-  appointment: Appointment
-) => {
+export const create = async (appointment: Appointment) => {
   logInfo(`Create appointment in DB`, appointment);
 
   const query = {

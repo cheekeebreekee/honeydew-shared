@@ -11,9 +11,7 @@ import { config } from "../../../shared";
 
 const dynamoDb = new DynamoDB({});
 
-export const get = async (
-  id: string
-): Promise<Appointment> => {
+export const get = async (id: string): Promise<Appointment> => {
   logInfo("Getting employee from DB", { id });
 
   const query = {

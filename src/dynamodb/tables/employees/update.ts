@@ -11,9 +11,7 @@ import { logError, logInfo } from "../../../utils/logger";
 
 const dynamoDb = new DynamoDB({});
 
-export const update = async (
-  employeePartial: Partial<Appointment>
-) => {
+export const update = async (employeePartial: Partial<Appointment>) => {
   logInfo("Updating employee in DB", employeePartial);
 
   if (!employeePartial.id) {
