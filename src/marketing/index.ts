@@ -1,23 +1,21 @@
-import { SQS } from "@aws-sdk/client-sqs";
-import { Patient } from "../types/Patient";
+import { publishEvent } from "../events";
+import { DETAIL_TYPES } from "../events/detail-types";
 import { logInfo } from "../utils/logger";
 
-const sqs = new SQS({ apiVersion: "latest" });
-
-async function setStatusTag(patient: Patient, statusName: string, isActive: boolean) {
+async function setStatusTag(patientId: string, statusName: string, isActive: boolean) {
   logInfo("Setting marketing tag to the patient", {
-    patient,
+    patientId,
     statusName,
     isActive,
   });
-  await sqs.sendMessage({
-    QueueUrl: "",
-    MessageBody: JSON.stringify({
-      patientId: patient.id,
+  await publishEvent(
+    JSON.stringify({
+      patientId,
       tag: statusName,
       add: isActive,
     }),
-  });
+    DETAIL_TYPES.MARKETING_UPDATES
+  );
 }
 
 export const MarketingService = {
