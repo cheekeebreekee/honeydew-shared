@@ -1,4 +1,7 @@
-import { mapToAppointmentScheduledFbEvent } from "./map-to-appointment-scheduled-fb-event";
-import { mapToMarketingSetStatusTagEvent } from "./map-to-marketing-set-status-tag-event";
+import * as marketing from "./marketing";
+import * as referral from "./referral";
 
-export { mapToMarketingSetStatusTagEvent, mapToAppointmentScheduledFbEvent };
+export const EventMappers = {
+  marketing,
+  referral,
+};

@@ -8,4 +8,5 @@ export enum DETAIL_TYPES {
   MARKETING_UPDATES = "marketing/updates",
   MARKETING_SET_STATUS_TAG = "marketing/set-tag",
   MARKETING_FACEBOOK_EVENT = "marketing/facebook-event",
+  REWARD_REFERRALS = "referral/reward",
 }
