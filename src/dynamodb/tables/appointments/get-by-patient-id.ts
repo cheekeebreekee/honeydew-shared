@@ -6,7 +6,7 @@ import { Appointment } from "../../../types";
 
 const dynamoDb = new DynamoDB({});
 
-export const getByPatientId = async (patientId: string): Promise<Appointment> => {
+export const getByPatientId = async (patientId: string): Promise<Appointment[]> => {
   logInfo("Getting appointment from DB by patient ID", { patientId });
 
   const query = {
@@ -33,5 +33,5 @@ export const getByPatientId = async (patientId: string): Promise<Appointment> =>
 
   logInfo("Appointment found", Items);
 
-  return unmarshall(Items[0]) as Appointment;
+  return Items.map(item => unmarshall(item)) as Appointment[];
 };
