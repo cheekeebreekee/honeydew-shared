@@ -1,6 +1,6 @@
 {
   "name": "honeydew-shared",
-  "version": "1.0.39",
+  "version": "1.0.44",
   "description": "Honeydew common clients",
   "main": "",
   "scripts": {
@@ -36,6 +36,7 @@
     "graphql-request": "^5.2.0",
     "moment-timezone": "^0.5.34",
     "rimraf": "^3.0.2",
+    "sha256": "^0.2.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
