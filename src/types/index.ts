@@ -19,3 +19,4 @@ export * from "./TreatmentPlan";
 export * from "./Twilio";
 export * from "./Main";
 export * from "./Appointment";
+export * from "./Analytics"
