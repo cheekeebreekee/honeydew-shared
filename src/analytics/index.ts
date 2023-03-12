@@ -1,15 +1,15 @@
 import axios from "axios";
 import sha256 from "sha256";
-import { AnalyticsConfig, EVENT_TYPES } from "../types";
+import { AnalyticsConfig, FB_EVENT_TYPES } from "../types";
 import { logInfo } from "../utils/logger";
 
 async function sendAppointmentScheduledEvent(email: string, config: AnalyticsConfig) {
-  logInfo(`Sending "${EVENT_TYPES.SCHEDULE}" event to facebook`);
+  logInfo(`Sending "${FB_EVENT_TYPES.SCHEDULE}" event to facebook`);
 
   await axios.post(`${config.facebook.baseUrl}/${config.facebook.pixelId}/events`, {
     data: [
       {
-        event_name: EVENT_TYPES.SCHEDULE,
+        event_name: FB_EVENT_TYPES.SCHEDULE,
         event_time: Math.trunc(Date.now() / 1000),
         user_data: {
           em: sha256(email),
@@ -24,12 +24,12 @@ async function sendAppointmentScheduledEvent(email: string, config: AnalyticsCon
 }
 
 async function sendPurchaseEvent(email: string, amount: number, config: AnalyticsConfig) {
-  logInfo(`Sending "${EVENT_TYPES.PURCHASE}" event to facebook`);
+  logInfo(`Sending "${FB_EVENT_TYPES.PURCHASE}" event to facebook`);
 
   await axios.post(`${config.facebook.baseUrl}/${config.facebook.pixelId}/events`, {
     data: [
       {
-        event_name: EVENT_TYPES.PURCHASE,
+        event_name: FB_EVENT_TYPES.PURCHASE,
         event_time: Math.trunc(Date.now() / 1000),
         user_data: {
           em: sha256(email),
@@ -48,12 +48,12 @@ async function sendPurchaseEvent(email: string, amount: number, config: Analytic
 }
 
 async function sendCompleteRegistrationEvent(email: string, config: AnalyticsConfig) {
-  logInfo(`Sending "${EVENT_TYPES.COMPLETE_REGISTRATION}" event to facebook`);
+  logInfo(`Sending "${FB_EVENT_TYPES.COMPLETE_REGISTRATION}" event to facebook`);
 
   await axios.post(`${config.facebook.baseUrl}/${config.facebook.pixelId}/events`, {
     data: [
       {
-        event_name: EVENT_TYPES.COMPLETE_REGISTRATION,
+        event_name: FB_EVENT_TYPES.COMPLETE_REGISTRATION,
         event_time: Math.trunc(Date.now() / 1000),
         user_data: {
           em: sha256(email),
@@ -68,11 +68,11 @@ async function sendCompleteRegistrationEvent(email: string, config: AnalyticsCon
 }
 
 async function sendPageViewEvent(fbp: string, config: AnalyticsConfig) {
-  logInfo(`Sending "${EVENT_TYPES.PAGE_VIEW}" event to facebook`);
+  logInfo(`Sending "${FB_EVENT_TYPES.PAGE_VIEW}" event to facebook`);
   await axios.post(`${config.facebook.baseUrl}/${config.facebook.pixelId}/events`, {
     data: [
       {
-        event_name: EVENT_TYPES.PAGE_VIEW,
+        event_name: FB_EVENT_TYPES.PAGE_VIEW,
         event_time: Math.trunc(Date.now() / 1000),
         user_data: {
           fbp,
@@ -84,11 +84,11 @@ async function sendPageViewEvent(fbp: string, config: AnalyticsConfig) {
 }
 
 async function sendInitiateCheckoutEvent(fbp: string, config: AnalyticsConfig) {
-  logInfo(`Sending "${EVENT_TYPES.INITIATE_CHECKOUT}" event to facebook`);
+  logInfo(`Sending "${FB_EVENT_TYPES.INITIATE_CHECKOUT}" event to facebook`);
   await axios.post(`${config.facebook.baseUrl}/${config.facebook.pixelId}/events`, {
     data: [
       {
-        event_name: EVENT_TYPES.INITIATE_CHECKOUT,
+        event_name: FB_EVENT_TYPES.INITIATE_CHECKOUT,
         event_time: Math.trunc(Date.now() / 1000),
         user_data: {
           fbp,

@@ -1,4 +1,4 @@
-export enum EVENT_TYPES {
+export enum FB_EVENT_TYPES {
     SCHEDULE = "Schedule",
     PURCHASE = "Purchase",
     COMPLETE_REGISTRATION = "CompleteRegistration",
