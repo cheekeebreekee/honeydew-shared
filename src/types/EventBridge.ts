@@ -3,3 +3,7 @@ export interface SetStatusTagEventPayload {
     tag: string;
     add: boolean;
 }
+
+export interface AppointmentScheduledFbEvent {
+    email: string;
+}
