@@ -315,19 +315,15 @@ type PatientInsuranceInfo {
 type Patient {
   id: ID!
   accountId: ID!
-  appointmentId: ID!
   phone: String
   email: String
-  referralId: String
   careTeam: [PatientCareTeam]
   parentInfo: PatientParentInfo
   medicalBackground: PatientMedicalBackground
   shippingInfo: ShippingInfo
   insurance: PatientInsuranceInfo
   timezone: String
-  membership: PatientMembership
   scheduleLink: String
-  isAccutane: Boolean! # consider to move to flags
   # flags(contains flags for different purposes)
 }
 

@@ -11,9 +11,7 @@ import { HttpResponse } from "./http-response";
 import { config } from "../shared";
 
 export const enhancedAppSyncHandler =
-  <TArgument, TSource, TResult>(
-    handler: AppSyncResolverHandler<TArgument, TSource, TResult>
-  ): Handler =>
+  <TArgument, TResult>(handler: AppSyncResolverHandler<TArgument, TResult>): Handler =>
   async (event, context, callback) => {
     logInfo("AppSync event received", event);
 
