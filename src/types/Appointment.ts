@@ -13,5 +13,5 @@ export interface AppointmentServiceConfig {
     apiToken: string;
     organization: string;
     baseEvent: string;
-  }
+  };
 }

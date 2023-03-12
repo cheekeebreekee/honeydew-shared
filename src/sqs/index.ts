@@ -4,10 +4,6 @@ import { logDebug, logInfo } from "../utils";
 
 const sqsClient = new SQS({});
 
-const queues = {
-  stripeEventsQueueName: "stripe-events",
-};
-
 const sendMessage = async (
   message: Record<string, any> | Record<string, any>[],
   queueName: string
@@ -49,6 +45,5 @@ const sendMessage = async (
 };
 
 export const sqs = {
-  queues,
   sendMessage,
 };

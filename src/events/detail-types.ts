@@ -1,12 +1,11 @@
 export enum DETAIL_TYPES {
-  NOTIFICATIONS = "Honeydew Email/SMS Notification Event",
-  SMS_REPLIES = "Honeydew Users SMS Replies",
-  CHAT_ACTIONS = "Honeydew Twilio Chat Actions",
+  NOTIFICATIONS = "notifications/action",
+  SMS_REPLIES = "notifications/reply",
+  CHAT_ACTIONS = "chats/action",
   APPOINTMENT_CREATED = "appointment/created",
   APPOINTMENT_CANCELED = "appointment/canceled",
-  STRIPE_EVENTS = "Stripe Webhook Events For Honeydew",
-  MARKETING_UPDATES = "Honeydew Marketing Updates Events",
-  PATIENTS_ACTIONS = "Honeydew Patient Action Events",
+  STRIPE_EVENTS = "payments/stripe-events",
+  MARKETING_UPDATES = "marketing/updates",
   MARKETING_SET_STATUS_TAG = "marketing/set-tag",
-  MARKETING_FACEBOOK_EVENT = "marketing/facebook-event"
+  MARKETING_FACEBOOK_EVENT = "marketing/facebook-event",
 }
