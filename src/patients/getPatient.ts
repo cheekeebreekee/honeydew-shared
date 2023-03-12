@@ -1,11 +1,29 @@
-import request, { gql } from "graphql-request/build/esm";
+import { gql, ApolloClient, InMemoryCache, HttpLink } from "@apollo/client";
+import fetch from "cross-fetch";
 import { Patient } from "../types";
+import { logError } from "../utils";
 
 export const getPatient = async (patientId: string) => {
-  const query = gql`
-    query getPatient($patientId: String!)
-  `;
+  const apolloClient = new ApolloClient({
+    link: new HttpLink({
+      uri: "// TODO",
+      fetch,
+    }),
+    cache: new InMemoryCache(),
+  });
 
-  const result = await request<Patient>("", query, { patientId });
-  return result;
+  const result = await apolloClient.query<Patient>({
+    query: gql`
+      query getPatient($patientId: String!)
+    `,
+    variables: {
+      patientId,
+    },
+  });
+
+  if (result.error) {
+    logError("Error during patient get operation", result.errors);
+    throw new Error("Error during patient get operation");
+  }
+  return result.data;
 };
