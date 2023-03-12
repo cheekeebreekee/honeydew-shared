@@ -4,8 +4,8 @@ export const mapToMarketingSetStatusTagEvent = (payload: SetStatusTagEventPayloa
   return {
     payload: {
       patientId: payload.patientId,
-      statusTag: payload.statusTag,
-      isActive: payload.isActive,
+      tag: payload.tag,
+      add: payload.add,
     },
     eventType: EVENTBRIDGE_EVENT_TYPES.MARKETING_SET_STATUS_TAG,
   };

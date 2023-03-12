@@ -13,3 +13,12 @@ export interface Appointment {
   endTime: string;
   history: AppointmentHistory[];
 }
+
+export interface AppointmentServiceConfig {
+  calendly: {
+    baseUrl: string;
+    apiToken: string;
+    organization: string;
+    baseEvent: string;
+  }
+}

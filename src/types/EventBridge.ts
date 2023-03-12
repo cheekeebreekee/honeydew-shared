@@ -1,7 +1,7 @@
 export interface SetStatusTagEventPayload {
     patientId: string;
-    statusTag: string;
-    isActive: boolean;
+    tag: string;
+    add: boolean;
 }
 
 export enum EVENTBRIDGE_EVENT_TYPES {

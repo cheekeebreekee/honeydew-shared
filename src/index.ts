@@ -9,3 +9,4 @@ export * from "./sqs";
 export * from "./patients";
 export * from "./analytics";
 export * from "./event-mappers"
+export * from "./appointments"
