@@ -1,6 +1,6 @@
 {
   "name": "honeydew-shared",
-  "version": "1.0.47",
+  "version": "1.0.48",
   "description": "Honeydew common clients",
   "main": "",
   "scripts": {
@@ -69,10 +69,10 @@
     "typescript": "^4.5.5"
   },
   "lint-staged": {
-    "src/**/*.{ts,js,md,yaml}": [
+    "src/**/*.{ts,js,yaml}": [
       "prettier --config .prettierrc.json --write ."
     ],
-    "**/*.ts": [
+    "src/**/*.ts": [
       "tsc-files --noEmit"
     ]
   }

@@ -194,16 +194,24 @@ export interface MedicalBackground {
   skinSurvey: SkinSurveyAnswer[];
 }
 
+export interface PatientParentsInfo {
+  name: string;
+  email: string;
+  phone: string;
+}
+
 export interface Patient {
   id: string;
   accountId: string;
-  appointmentId?: string;
+  fullName: string;
   phone?: string;
-  referralId?: string;
-  careTeam: string[];
-  medicalBackground: MedicalBackground;
+  careTeam?: string[];
+  medicalBackground?: MedicalBackground;
   insurance?: InsuranceInfo;
-  timezone: string;
+  timezone?: string;
+  parentsInfo?: PatientParentsInfo;
+  shippingInfo?: ShippingInfo;
+  scheduleLink?: string;
 }
 
 export interface PatientEmailCheckInfo {

@@ -316,7 +316,7 @@ type Patient {
   id: ID!
   accountId: ID!
   phone: String
-  email: String
+  fullName: String!
   careTeam: [PatientCareTeam]
   parentInfo: PatientParentInfo
   medicalBackground: PatientMedicalBackground
