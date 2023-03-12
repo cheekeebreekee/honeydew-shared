@@ -6,6 +6,29 @@ export enum FB_EVENT_TYPES {
     INITIATE_CHECKOUT = "InitiateCheckout"
 }
 
+export type FacebookAnalyticsScheduleEventPayload = {
+    email: string;
+};
+export type FacebookAnalyticsPurchaseEventPayload = {
+    email: string;
+    amount: number;
+};
+export type FacebookAnalyticsCompleteRegistrationEventPayload = {
+    email: string;
+};
+export type FacebookAnalyticsPageViewEventPayload = {
+    fbp: string;
+};
+export type FacebookAnalyticsInitiateCheckoutEventPayload = {
+    fbp: string;
+};
+
+export type FacebookAnalyticsEventPayload = FacebookAnalyticsScheduleEventPayload
+    | FacebookAnalyticsPurchaseEventPayload
+    | FacebookAnalyticsCompleteRegistrationEventPayload
+    | FacebookAnalyticsPageViewEventPayload
+    | FacebookAnalyticsInitiateCheckoutEventPayload
+
 export interface FacebookAnalyticsConfig {
     pixelId: string;
     accessToken: string;

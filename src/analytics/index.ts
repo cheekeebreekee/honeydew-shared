@@ -1,9 +1,9 @@
 import axios from "axios";
 import sha256 from "sha256";
-import { AnalyticsConfig, FB_EVENT_TYPES } from "../types";
+import { AnalyticsConfig, FacebookAnalyticsCompleteRegistrationEventPayload, FacebookAnalyticsInitiateCheckoutEventPayload, FacebookAnalyticsPageViewEventPayload, FacebookAnalyticsPurchaseEventPayload, FacebookAnalyticsScheduleEventPayload, FB_EVENT_TYPES } from "../types";
 import { logInfo } from "../utils/logger";
 
-async function sendAppointmentScheduledEvent(email: string, config: AnalyticsConfig) {
+async function sendAppointmentScheduledEvent(payload: FacebookAnalyticsScheduleEventPayload, config: AnalyticsConfig) {
   logInfo(`Sending "${FB_EVENT_TYPES.SCHEDULE}" event to facebook`);
 
   await axios.post(`${config.facebook.baseUrl}/${config.facebook.pixelId}/events`, {
@@ -12,7 +12,7 @@ async function sendAppointmentScheduledEvent(email: string, config: AnalyticsCon
         event_name: FB_EVENT_TYPES.SCHEDULE,
         event_time: Math.trunc(Date.now() / 1000),
         user_data: {
-          em: sha256(email),
+          em: sha256(payload.email),
         },
       },
     ],
@@ -23,7 +23,7 @@ async function sendAppointmentScheduledEvent(email: string, config: AnalyticsCon
   logInfo("Event submitted successfully");
 }
 
-async function sendPurchaseEvent(email: string, amount: number, config: AnalyticsConfig) {
+async function sendPurchaseEvent(payload: FacebookAnalyticsPurchaseEventPayload, config: AnalyticsConfig) {
   logInfo(`Sending "${FB_EVENT_TYPES.PURCHASE}" event to facebook`);
 
   await axios.post(`${config.facebook.baseUrl}/${config.facebook.pixelId}/events`, {
@@ -32,10 +32,10 @@ async function sendPurchaseEvent(email: string, amount: number, config: Analytic
         event_name: FB_EVENT_TYPES.PURCHASE,
         event_time: Math.trunc(Date.now() / 1000),
         user_data: {
-          em: sha256(email),
+          em: sha256(payload.email),
         },
         custom_data: {
-          value: amount,
+          value: payload.amount,
           currency: "USD",
         },
       },
@@ -47,7 +47,7 @@ async function sendPurchaseEvent(email: string, amount: number, config: Analytic
   logInfo("Event submitted successfully");
 }
 
-async function sendCompleteRegistrationEvent(email: string, config: AnalyticsConfig) {
+async function sendCompleteRegistrationEvent(payload: FacebookAnalyticsCompleteRegistrationEventPayload, config: AnalyticsConfig) {
   logInfo(`Sending "${FB_EVENT_TYPES.COMPLETE_REGISTRATION}" event to facebook`);
 
   await axios.post(`${config.facebook.baseUrl}/${config.facebook.pixelId}/events`, {
@@ -56,7 +56,7 @@ async function sendCompleteRegistrationEvent(email: string, config: AnalyticsCon
         event_name: FB_EVENT_TYPES.COMPLETE_REGISTRATION,
         event_time: Math.trunc(Date.now() / 1000),
         user_data: {
-          em: sha256(email),
+          em: sha256(payload.email),
         },
       },
     ],
@@ -67,7 +67,7 @@ async function sendCompleteRegistrationEvent(email: string, config: AnalyticsCon
   logInfo("Event submitted successfully");
 }
 
-async function sendPageViewEvent(fbp: string, config: AnalyticsConfig) {
+async function sendPageViewEvent(payload: FacebookAnalyticsPageViewEventPayload, config: AnalyticsConfig) {
   logInfo(`Sending "${FB_EVENT_TYPES.PAGE_VIEW}" event to facebook`);
   await axios.post(`${config.facebook.baseUrl}/${config.facebook.pixelId}/events`, {
     data: [
@@ -75,7 +75,7 @@ async function sendPageViewEvent(fbp: string, config: AnalyticsConfig) {
         event_name: FB_EVENT_TYPES.PAGE_VIEW,
         event_time: Math.trunc(Date.now() / 1000),
         user_data: {
-          fbp,
+          fbp: payload.fbp,
         },
       },
     ],
@@ -83,7 +83,7 @@ async function sendPageViewEvent(fbp: string, config: AnalyticsConfig) {
   });
 }
 
-async function sendInitiateCheckoutEvent(fbp: string, config: AnalyticsConfig) {
+async function sendInitiateCheckoutEvent(payload: FacebookAnalyticsInitiateCheckoutEventPayload, config: AnalyticsConfig) {
   logInfo(`Sending "${FB_EVENT_TYPES.INITIATE_CHECKOUT}" event to facebook`);
   await axios.post(`${config.facebook.baseUrl}/${config.facebook.pixelId}/events`, {
     data: [
@@ -91,7 +91,7 @@ async function sendInitiateCheckoutEvent(fbp: string, config: AnalyticsConfig) {
         event_name: FB_EVENT_TYPES.INITIATE_CHECKOUT,
         event_time: Math.trunc(Date.now() / 1000),
         user_data: {
-          fbp,
+          fbp: payload.fbp,
         },
       },
     ],
