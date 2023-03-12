@@ -1,4 +1,5 @@
-import { EVENTBRIDGE_EVENT_TYPES, SetStatusTagEventPayload } from "../types/EventBridge";
+import { DETAIL_TYPES } from "../events/detail-types";
+import { SetStatusTagEventPayload } from "../types/EventBridge";
 
 export const mapToMarketingSetStatusTagEvent = (payload: SetStatusTagEventPayload) => {
   return {
@@ -7,6 +8,6 @@ export const mapToMarketingSetStatusTagEvent = (payload: SetStatusTagEventPayloa
       tag: payload.tag,
       add: payload.add,
     },
-    eventType: EVENTBRIDGE_EVENT_TYPES.MARKETING_SET_STATUS_TAG,
+    eventType: DETAIL_TYPES.MARKETING_SET_STATUS_TAG,
   };
 };
