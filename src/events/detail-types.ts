@@ -5,4 +5,5 @@ export enum DETAIL_TYPES {
   APPOINTMENT_CREATED = "appointment/created",
   STRIPE_EVENTS = "Stripe Webhook Events For Honeydew",
   MARKETING_UPDATES = "Honeydew Marketing Updates Events",
+  PATIENTS_ACTIONS = "Honeydew Patient Action Events",
 }

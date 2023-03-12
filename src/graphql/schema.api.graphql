@@ -294,8 +294,6 @@ type ShippingInfo {
   city: String
   state: String
   zipCode: String
-  firstName: String
-  lastName: String
   addressLine1: String
   addressLine2: String
 }
