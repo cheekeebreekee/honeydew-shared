@@ -3,6 +3,7 @@ export enum DETAIL_TYPES {
   SMS_REPLIES = "Honeydew Users SMS Replies",
   CHAT_ACTIONS = "Honeydew Twilio Chat Actions",
   APPOINTMENT_CREATED = "appointment/created",
+  APPOINTMENT_CANCELED = "appointment/canceled",
   STRIPE_EVENTS = "Stripe Webhook Events For Honeydew",
   MARKETING_UPDATES = "Honeydew Marketing Updates Events",
   PATIENTS_ACTIONS = "Honeydew Patient Action Events",

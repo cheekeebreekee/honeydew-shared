@@ -22,5 +22,5 @@
     "./node_modules/*",
     ".webpack"
   ],
-  "include": ["src"]
+  "include": ["src", "../honeydew-appointment-service/src/services/calendly", "../honeydew-appointment-service/src/services/appointments"]
 }
