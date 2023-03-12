@@ -1,8 +1,33 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { APIGatewayProxyEventV2, APIGatewayProxyResultV2, Handler, SQSEvent } from "aws-lambda";
+import {
+  APIGatewayProxyEventV2,
+  APIGatewayProxyResultV2,
+  AppSyncResolverHandler,
+  Handler,
+  SQSEvent,
+} from "aws-lambda";
 import { logError, logInfo } from "./logger";
 import { HttpResponse } from "./http-response";
 import { config } from "../shared";
+
+export const enhancedAppSyncHandler =
+  <TArgument, TSource, TResult>(
+    handler: AppSyncResolverHandler<TArgument, TSource, TResult>
+  ): Handler =>
+  async (event, context, callback) => {
+    logInfo("AppSync event received", event);
+
+    let response;
+    try {
+      await config.initConfig();
+      response = await handler(event, context, callback);
+    } catch (e) {
+      logError("Lambda exit with error", e);
+      throw e;
+    }
+
+    return response;
+  };
 
 export const enhancedApiHandler =
   <T = APIGatewayProxyEventV2>(handler: Handler<T>): Handler =>
