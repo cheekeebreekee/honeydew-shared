@@ -23,12 +23,14 @@ export type FacebookAnalyticsInitiateCheckoutEventPayload = {
     fbp: string;
 };
 
-export type FacebookAnalyticsEventPayload = FacebookAnalyticsScheduleEventPayload
-    | FacebookAnalyticsPurchaseEventPayload
-    | FacebookAnalyticsCompleteRegistrationEventPayload
-    | FacebookAnalyticsPageViewEventPayload
-    | FacebookAnalyticsInitiateCheckoutEventPayload
-
+export type FacebookAnalyticsEventPayload = {
+    type: FB_EVENT_TYPES;
+    data: FacebookAnalyticsScheduleEventPayload
+        | FacebookAnalyticsPurchaseEventPayload
+        | FacebookAnalyticsCompleteRegistrationEventPayload
+        | FacebookAnalyticsPageViewEventPayload
+        | FacebookAnalyticsInitiateCheckoutEventPayload
+}
 export interface FacebookAnalyticsConfig {
     pixelId: string;
     accessToken: string;
