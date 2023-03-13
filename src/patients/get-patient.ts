@@ -1,17 +1,10 @@
-import { gql, ApolloClient, InMemoryCache, HttpLink } from "@apollo/client/core";
-import fetch from "cross-fetch";
+import { gql } from "@apollo/client/core";
 import { Patient } from "../types";
 import { logError } from "../utils";
+import { getApolloNodeClient } from "../utils/get-apollo-node-client";
 
 export const getPatient = async (patientId: string) => {
-  // TODO: generalize initalization
-  const apolloClient = new ApolloClient({
-    link: new HttpLink({
-      uri: "// TODO",
-      fetch,
-    }),
-    cache: new InMemoryCache(),
-  });
+  const apolloClient = getApolloNodeClient("// TODO");
 
   const result = await apolloClient.query<Patient>({
     query: gql`

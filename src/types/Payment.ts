@@ -13,3 +13,9 @@ export interface PaymentCreationPayload {
     price: string;
   }[];
 }
+
+export type UpdateInternalCreditEvent = {
+  customerId: string;
+  amount: number;
+  description: string;
+};

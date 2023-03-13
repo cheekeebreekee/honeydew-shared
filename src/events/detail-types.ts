@@ -5,6 +5,7 @@ export enum DETAIL_TYPES {
   APPOINTMENT_CREATED = "appointment/created",
   APPOINTMENT_CANCELED = "appointment/canceled",
   STRIPE_EVENTS = "payments/stripe-events",
+  UPDATE_INTERNAL_CREDIT = "payments/update-internal-credit",
   MARKETING_UPDATES = "marketing/updates",
   MARKETING_SET_STATUS_TAG = "marketing/set-tag",
   MARKETING_FACEBOOK_EVENT = "marketing/facebook-event",
