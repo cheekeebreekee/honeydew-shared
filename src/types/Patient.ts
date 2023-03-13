@@ -205,6 +205,7 @@ export interface Patient {
   accountId: string;
   fullName: string;
   email: string;
+  customerId?: string;
   phone?: string;
   careTeam?: string[];
   medicalBackground?: MedicalBackground;
