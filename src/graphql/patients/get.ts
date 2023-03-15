@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client/core";
-import { config } from "../shared";
-import { Patient } from "../types";
-import { logError } from "../utils";
-import { getApolloNodeClient } from "../utils/get-apollo-node-client";
+import { config } from "../../shared";
+import { Patient } from "../../types";
+import { logError } from "../../utils";
+import { getApolloNodeClient } from "../../utils/get-apollo-node-client";
 
 export const getPatient = async (patientId: string) => {
   const apolloClient = getApolloNodeClient(config.getSharedValue("patientsServiceGraphQLEndpoint"));

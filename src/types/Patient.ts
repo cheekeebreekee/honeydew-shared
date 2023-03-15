@@ -1,78 +1,11 @@
+import { EMPLOYEE_ROLES } from "./Employee";
+
 export interface Medication {
   instructions: string[];
   refillExpirationDate: number | null;
   medicineKey: string;
   specialInstructions: string | null;
   refillsCount: number;
-}
-
-export interface TreatmentPlanData {
-  messageText: string;
-  treatmentPlanPreset: string;
-  nextFollowUpDate: number;
-  providerName: string;
-  providerId?: string;
-  timestamp: number;
-  treatmentPlan: Medication[];
-  isReadByCareCoordinator?: boolean;
-  isReadByPatient?: boolean;
-  isUserNotifiedAboutFollowUp?: boolean;
-}
-
-export interface SkinImages {
-  list: string[] | null;
-  timestamp: number;
-  treatmentPlanData?: TreatmentPlanData;
-  followUpData?: { [p: string]: string };
-}
-
-// export interface MedicalBackground {
-//   skinImages: SkinImages[] | null;
-//   birthControlMeds: string[] | null;
-//   pregnancy: boolean | null;
-//   isRegularMenstruationCycle: boolean | null;
-//   isPcos: boolean | null;
-//   skinSensitivity: string | null;
-//   currentPrescriptions: string[] | null;
-//   currentNonPrescriptions: string | null;
-//   skinDryness: string | null;
-//   prescriptionPills: string[];
-//   prescriptionCreams: string[];
-//   isAnyMedicalConditionPillsInUse: boolean | null;
-//   isAnyPrescriptionAllergies: boolean | null;
-//   medications: string | null;
-//   isAnyPrescriptionsInUse: boolean | null;
-//   previousAcneProductsTaken: string[] | null;
-//   isBirthControlTaken: boolean | null;
-//   menstruationBreakout: string | null;
-//   stressLevel: string | null;
-//   sleepAmount: string | null;
-//   dairyConsumption: string | null;
-//   notifiedAboutFillingBeforeAppointment?: boolean;
-//   prescriptionAllergies: string | null;
-// }
-
-export interface BasicInfo {
-  zipCode: string;
-  acnePeriod: string;
-  birthdate: string;
-  gender: string;
-  parentsEmail: string | null;
-  parentsPhone: string | null;
-  isChild: boolean;
-}
-
-export interface Membership {
-  hasSubscription: boolean;
-  membershipType?: string;
-  subscriptionExpirationDate?: number;
-  notificationLevel?: number;
-}
-
-export interface PaymentInfo {
-  customerId?: string;
-  currency?: string;
-  amount?: number;
 }
 
 export interface PatientNote {
@@ -185,13 +118,16 @@ export interface SkinSurveyAnswer {
   answer: string | string[] | boolean;
 }
 
+export interface MedicalBackgroundItem {
+  id: string;
+  answer: string; // TODO: add more answer types and consider adding medical background item type
+}
+
 export interface MedicalBackground {
-  sex?: string;
-  weight?: number;
-  height?: number;
-  dateOfBirth: string;
-  zipCode: string;
-  skinSurvey: SkinSurveyAnswer[];
+  sex: string;
+  height: number;
+  weight: number;
+  skinSurvey: MedicalBackgroundItem[];
 }
 
 export interface PatientParentsInfo {
@@ -200,15 +136,22 @@ export interface PatientParentsInfo {
   phone: string;
 }
 
-export interface Patient {
+export type CareTeamItem = {
   id: string;
+  role: EMPLOYEE_ROLES;
+};
+
+export interface Patient {
+  patientId: string;
   accountId: string;
+  state: string;
+  dateOfBirth: string;
   fullName: string;
   email: string;
+  medicalBackground?: MedicalBackground;
   customerId?: string;
   phone?: string;
-  careTeam?: string[];
-  medicalBackground?: MedicalBackground;
+  careTeam?: CareTeamItem[];
   insurance?: InsuranceInfo;
   timezone?: string;
   parentsInfo?: PatientParentsInfo;

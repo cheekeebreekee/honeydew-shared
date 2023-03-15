@@ -1,11 +1,4 @@
-import {
-  BasicInfo,
-  ChatIdentityType,
-  MedicalBackground,
-  PatientNote,
-  SkinImages,
-  TreatmentPlanData,
-} from "./Patient";
+import { ChatIdentityType, MedicalBackground, PatientNote } from "./Patient";
 
 export interface InsurancceInfoPayload {
   insuranceName: string;
@@ -24,31 +17,6 @@ export interface ShippingInfoPayload {
   zipCode: string;
 }
 
-export interface SkinSurveyResultPayload {
-  id: string;
-  skinSensitivity?: string;
-  skinDryness: string | null;
-  pregnancy: boolean | null;
-  menstruationBreakout: string | null;
-  isRegularMenstruationCycle: boolean;
-  isBirthControlTaken: boolean | null;
-  birthControlMeds: string[] | null;
-  isPcos: boolean;
-  previousAcneProductsTaken: string[];
-  prescriptionPills?: string[];
-  prescriptionCreams?: string[];
-  currentNonPrescriptions?: string | null;
-  isAnyPrescriptionsInUse: boolean | null;
-  currentPrescriptions?: string | null;
-  isAnyMedicalConditionPillsInUse: boolean | null;
-  medications: string | null;
-  isAnyPrescriptionAllergies: boolean | null;
-  stressLevel?: string;
-  sleepAmount?: string;
-  dairyConsumption?: string;
-  skinImages: SkinImages[];
-}
-
 export interface AddPatientNotesPayload {
   id: string;
   note: PatientNote;
@@ -61,24 +29,11 @@ export interface UpdateChatInitTimestampPayload {
   highlight?: string;
 }
 
-export interface SubmitTreatmentPlanPayload {
-  isEdit: boolean;
-  isSubmittedByCareCoordinator: boolean;
-  userId: string;
-  treatmentPlanData: TreatmentPlanData;
-}
-
 export interface SubmitFollowUpPayload {
   userId: string;
   list: string[];
   followUpData: { [p: string]: string };
   timestamp: number;
-}
-
-export interface UpdateMedicalBackgroundPayload {
-  userId: string;
-  medicalBackground: Partial<MedicalBackground>;
-  basicInfo: Partial<BasicInfo>;
 }
 
 export interface ImagePayload {

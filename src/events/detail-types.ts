@@ -6,8 +6,10 @@ export enum DETAIL_TYPES {
   APPOINTMENT_CANCELED = "appointment/canceled",
   STRIPE_EVENTS = "payments/stripe-events",
   UPDATE_INTERNAL_CREDIT = "payments/update-internal-credit",
+  CREATE_STRIPE_CUSTOMER = "payments/create-stripe-customer",
   MARKETING_UPDATES = "marketing/updates",
   MARKETING_SET_STATUS_TAG = "marketing/set-tag",
   MARKETING_FACEBOOK_EVENT = "marketing/facebook-event",
   REWARD_REFERRALS = "referral/reward",
+  CREATE_REFERRAL_USER = "referral/create-user",
 }
