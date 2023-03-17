@@ -1,5 +1,4 @@
 import { DETAIL_TYPES } from "../../events/detail-types";
-import { UpdateInternalCreditEvent } from "../../types";
 
 export const createReferralUserByCodeEvent = (referralCode: string) => ({
   payload: {

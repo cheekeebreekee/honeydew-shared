@@ -6,3 +6,4 @@ export * from "./Main";
 export * from "./Appointment";
 export * from "./Analytics";
 export * from "./Marketing";
+export * from "./Stripe";
