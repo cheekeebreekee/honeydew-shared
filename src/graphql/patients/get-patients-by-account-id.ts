@@ -1,14 +1,15 @@
 import { gql } from "@apollo/client/core";
 import { config } from "../../shared";
+import { Patient } from "../../types";
 import { logError } from "../../utils";
 import { getApolloNodeClient } from "../../utils/get-apollo-node-client";
 
-export const getPatientsCountByAccountId = async (accountId: string) => {
+export const getPatientsByAccountId = async (accountId: string) => {
   const apolloClient = getApolloNodeClient(config.getSharedValue("patientsServiceGraphQLEndpoint"));
 
-  const result = await apolloClient.query<number>({
+  const result = await apolloClient.query<Patient[]>({
     query: gql`
-      query getPatientCount($accountId: String!)
+      query getPatientsByAccountId($accountId: String!)
     `,
     variables: {
       accountId,
@@ -16,8 +17,8 @@ export const getPatientsCountByAccountId = async (accountId: string) => {
   });
 
   if (result.error) {
-    logError("Error during patient get count operation", result.errors);
-    throw new Error("Error during patient get count operation");
+    logError("Error during patients get by account operation", result.errors);
+    throw new Error("Error during patients get by account operation");
   }
   return result.data;
 };

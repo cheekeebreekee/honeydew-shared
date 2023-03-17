@@ -1,2 +1,2 @@
 export * from "./get";
-export * from "./get-count-by-account-id";
+export * from "./get-patients-by-account-id";

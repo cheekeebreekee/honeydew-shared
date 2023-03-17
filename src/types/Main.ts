@@ -1,8 +1,7 @@
-import { EMPLOYEE_ROLES } from "./Employee";
-
-export enum PATIENT_ROLE {
+export enum USER_ROLES {
   PATIENT = "patient",
+  PROVIDER = "provider",
+  CARE_COORDINATOR = "care-coordinator",
+  ENROLLMENT_COORDINATOR = "enrollment-coordinator",
+  ADMINISTRATOR = "administrator",
 }
-
-export const USER_ROLES = { ...PATIENT_ROLE, ...EMPLOYEE_ROLES };
-export type USER_ROLES = typeof USER_ROLES;

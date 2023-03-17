@@ -2,7 +2,6 @@ export * from "./adjust-parent-email";
 export * from "./are-phone-number-equal";
 export * from "./collect-invite-actions";
 export * from "./enhanced-handler";
-export * from "./generate-chat-info-payload";
 export * from "./get-date-pretty";
 export * from "./get-patient-initials";
 export * from "./http-response";

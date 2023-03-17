@@ -1,9 +1,10 @@
-export enum EMPLOYEE_ROLES {
-  PROVIDER = "provider",
-  CARE_COORDINATOR = "care-coordinator",
-  ENROLLMENT_COORDINATOR = "enrollment-coordinator",
-  ADMIN = "admin",
-}
+import { USER_ROLES } from "./Main";
+
+export type EMPLOYEE_ROLES =
+  | USER_ROLES.PROVIDER
+  | USER_ROLES.CARE_COORDINATOR
+  | USER_ROLES.ENROLLMENT_COORDINATOR
+  | USER_ROLES.ADMINISTRATOR;
 
 export interface Employee {
   id: string;
@@ -13,7 +14,6 @@ export interface Employee {
   email: string;
   phone: string;
   image: string;
-  title?: string;
 }
 
 export interface Provider extends Employee {
@@ -26,12 +26,6 @@ export interface CareCoordinator extends Employee {
   detachedFromNewPatients?: boolean;
 }
 
-export interface EnrollmentCoordinator extends Employee {
-  detachedFromNewPatients?: boolean;
-}
+export type EnrollmentCoordinator = Employee;
 
-export interface Administrator extends Employee {
-  group?: string;
-  groupFriendly?: string;
-  fullName?: string;
-}
+export type Administrator = Employee;

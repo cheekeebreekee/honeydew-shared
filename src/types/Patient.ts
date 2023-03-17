@@ -1,80 +1,11 @@
 import { EMPLOYEE_ROLES } from "./Employee";
 
-export interface Medication {
-  instructions: string[];
-  refillExpirationDate: number | null;
-  medicineKey: string;
-  specialInstructions: string | null;
-  refillsCount: number;
-}
-
-export interface PatientNote {
-  date: string;
-  value: string;
-  fullName: string;
-}
-
-export interface CalendlyAppointment {
-  cancelled_at: null;
-  invitee_start_time: string;
-  invitee_start_time_pretty: string;
-  end_time: string;
-  created_at: string;
-  type: {
-    name: string;
-    duration: number;
-    owner: {
-      type: string;
-      uuid: string;
-    };
-    id: string;
-    kind: string;
-  };
-  start_time: string;
-  invitee_end_time: string;
-  invitee_end_time_pretty: string;
-  cancel_reason: null;
-  start_time_pretty: string;
-  end_time_pretty: string;
-  cancelled: boolean;
-  id: string;
-  canceller_name: null;
-  assigned_to: {
-    name: string;
-    email: string;
-    primary: boolean;
-  }[];
-}
-
-export interface CalendlyAppointmentStatus {
-  status: string;
-  timestamp: number;
-  reason?: string;
-}
-
 export interface ShippingInfo {
-  firstName: string;
-  lastName: string;
   zipCode: string;
   city: string;
   addressLine1: string;
   addressLine2: string;
   state: string;
-}
-
-export type ChatIdentityType = "user" | "provider" | "care-coordinator" | "admin";
-
-export type ChatIdentity = {
-  [p in ChatIdentityType]?: {
-    chatInitTimestamp: string;
-    highlight?: string;
-  };
-};
-
-export interface ChatInfo extends ChatIdentity {
-  lastMessageSentTimestamp?: string;
-  lastMessageSentByRole?: string;
-  conversationId: string;
 }
 
 // export interface Patient {
@@ -157,17 +88,4 @@ export interface Patient {
   parentInfo?: PatientParentsInfo;
   shippingInfo?: ShippingInfo;
   scheduleLink?: string;
-}
-
-export interface PatientEmailCheckInfo {
-  member: boolean;
-  id: string;
-  fullName: string;
-}
-
-export interface UnsupportedPatient {
-  id: string;
-  phone: string;
-  email: string;
-  zipCode: string;
 }
