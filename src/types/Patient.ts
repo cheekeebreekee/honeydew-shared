@@ -154,7 +154,7 @@ export interface Patient {
   careTeam?: CareTeamItem[];
   insurance?: InsuranceInfo;
   timezone?: string;
-  parentsInfo?: PatientParentsInfo;
+  parentInfo?: PatientParentsInfo;
   shippingInfo?: ShippingInfo;
   scheduleLink?: string;
 }
